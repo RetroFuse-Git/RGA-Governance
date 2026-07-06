@@ -1,0 +1,19 @@
+{
+  "schema": "rga-cutover-receipt-v1",
+  "timestamp_utc": "2026-07-06T13:29:39.0178690-04:00",
+  "canonical_root": "D:\\RETROFUSE_OPS\\RGA",
+  "canonical_authority_path": "D:\\RETROFUSE_OPS\\RGA\\authority",
+  "old_tools_rga_boot_status": "compatibility/rollback only",
+  "gen7_status": "retired/historical",
+  "deepseek_api_untouched": true,
+  "deepseek_auth_untouched": true,
+  "cursor_routing_untouched": true,
+  "active_old_root_refs": 0,
+  "active_gen7_boot_refs": 0,
+  "health_check": "PASS 12/12",
+  "bolt_commits": ["fa3d829", "b7be6d3", "05ced2a"],
+  "rcd_commits": ["9c2f1ea", "1c9c092", "c1b10ee"],
+  "rollback_plan": "Revert launcher and RCD references to Tools\\RGA\\_boot\\authority",
+  "top_level_rga_git": false,
+  "push_attempted": false
+}

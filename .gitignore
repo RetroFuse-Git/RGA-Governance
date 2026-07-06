@@ -1,0 +1,8 @@
+# RGA Governance Repo — .gitignore
+receipts/
+reports/
+*.tmp
+*.bak
+__pycache__/
+*.pyc
+.DS_Store
