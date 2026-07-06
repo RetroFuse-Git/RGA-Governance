@@ -1,5 +1,5 @@
 # OPS_CANONICAL_INDEX.md
-## GEN7 — Canonical Index v2.0 (LAW + POINTERS ONLY)
+## RGA — Canonical Index v2.1 (LAW + POINTERS ONLY)
 
 > **Purpose:** Declare what is authoritative *now* and where it lives.  
 > **Non-purpose:** This file does **not** carry runtime “state” (ports/PIDs/health), history, or prose.  
@@ -17,6 +17,8 @@ This document defines the ONLY authoritative on-disk locations for OPS.
 
 Disk truth overrides conversational context, memory, or prior examples.
 
+**GEN7 Status:** RETIRED/HISTORICAL. Active authority lives at `D:\RETROFUSE_OPS\RGA\authority`. Pre-RGA `_BOOT\GEN7` paths are reference-only.
+
 ---
 
 ## 0) Continuity Rule (Hard)
@@ -30,10 +32,11 @@ Disk truth overrides conversational context, memory, or prior examples.
 ## 1) Authoritative Roots (OPS)
 
 - **OPS Root:** `D:\RETROFUSE_OPS`
-- **GEN7 Boot Root:** `D:\RETROFUSE_OPS\_BOOT\GEN7`
+- **RGA Authority Root:** `D:\RETROFUSE_OPS\RGA\authority`
 - **Registry Root:** `D:\RETROFUSE_OPS\Registry\OPS_COO`
 - **Logs Root:** `D:\RETROFUSE_OPS\Logs`
 - **Status Root:** `D:\RETROFUSE_OPS\Status`
+- **RCD Root:** `D:\RETROFUSE_OPS\Tools\RCD`
 
 ---
 
@@ -67,23 +70,23 @@ If any of the above is missing → **HALT: MISSING_ARTIFACTS**
 ## 3) Canonical Boot Artifacts (Explicit Paths)
 
 ### 3.1 README_FIRST (Orientation Only)
-- **Path:** `D:\RETROFUSE_OPS\_BOOT\GEN7\README_FIRST.md`
+- **Path:** `D:\RETROFUSE_OPS\RGA\authority\README_FIRST.md`
 - **Authority:** Orientation only (non-authoritative)
 
 ### 3.2 SAFEPOINT SOP v3.2 (Process Law)
-- **Path:** `D:\RETROFUSE_OPS\_BOOT\GEN7\RetroFuse_SAFEPOINT_SOP_v3.2.md`
+- **Path:** `D:\RETROFUSE_OPS\RGA\authority\RetroFuse_SAFEPOINT_SOP_v3.2.md`
 - **Authority:** Binding process law
 
 ### 3.3 Governance v3.3.0 (System Authority)
-- **Path:** `D:\RETROFUSE_OPS\_BOOT\GEN7\Governance_RetroFuse_v3.3.0.md`
+- **Path:** `D:\RETROFUSE_OPS\RGA\authority\Governance_RetroFuse_v3.3.0.md`
 - **Authority:** Binding
 
 ### 3.4 AI Contract v3.2 (AI Constraints)
-- **Path:** `D:\RETROFUSE_OPS\_BOOT\GEN7\AI_Contract_Safepoint_v3.2.json`
+- **Path:** `D:\RETROFUSE_OPS\RGA\authority\AI_Contract_Safepoint_v3.2.json`
 - **Authority:** Binding AI constraints
 
 ### 3.5 CR Schemas v3.1.1 (Schema Authority)
-- **Path:** `D:\RETROFUSE_OPS\_BOOT\GEN7\RetroFuse_CR_Schemas_v3.1.1.json`
+- **Path:** `D:\RETROFUSE_OPS\RGA\authority\RetroFuse_CR_Schemas_v3.1.1.json`
 - **Authority:** Binding Schema reference for CR generation/verification
 
 ### 3.6 OPS COO Startup Contract (Role Binding)
@@ -99,7 +102,7 @@ If any of the above is missing → **HALT: MISSING_ARTIFACTS**
 - **Authority:** GEN7 operational kernel (guidance + constraints)
 
 ### 4.2 OPS Handoff Pack (Reorientation Capsule)
-- **Path:** `D:\RETROFUSE_OPS\_BOOT\GEN7\OPS_Handoff_Pack_v1.3.md`
+- **Path:** `D:\RETROFUSE_OPS\RGA\authority\OPS_Handoff_Pack_v1.4.md`
 - **Authority:** Required for clean OPS-level resumption
 
 ### 4.3 Render DailyCheck (Human Readable)
@@ -284,7 +287,7 @@ If unsure:
 ## 12) Seal Footer (Optional; Informational)
 
 Artifact: `OPS_CANONICAL_INDEX.md`  
-Canonical Path: `D:\RETROFUSE_OPS\_BOOT\GEN7\OPS_CANONICAL_INDEX.md`  
+Canonical Path: `D:\RETROFUSE_OPS\RGA\authority\OPS_CANONICAL_INDEX.md`  
 Status: Append-only (may be sealed via tooling; sealing does not change authority order)
 
 
