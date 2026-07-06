@@ -1,0 +1,13 @@
+{
+  "schema": "rga-archive-receipt-v1",
+  "timestamp_utc": "2026-07-06T13:57:47.3007933-04:00",
+  "source_path": "D:\\RETROFUSE_OPS\\RGA\\_BOOT",
+  "archive_path": "D:\\RETROFUSE_OPS\\RGA\\_Archive\\HistoricalBootDuplicate_20260706_135747\\BOOT",
+  "classification": "HISTORICAL_DUPLICATE",
+  "reason": "Canonical authority moved to D:\\RETROFUSE_OPS\\RGA\\authority during RGA governance cutover (2026-07-06)",
+  "hash_match_evidence": "12/12 files match canonical authority",
+  "active_dependency": false,
+  "deletion_performed": false,
+  "moved_not_deleted": true,
+  "canonical_authority": "D:\\RETROFUSE_OPS\\RGA\\authority"
+}

@@ -1,0 +1,70 @@
+{
+  "contract_name": "AI Contract \u2013 SAFEPOINT & OPS",
+  "version": "3.2",
+  "status": "authoritative",
+  "effective_date": "2026-01-07",
+  "scope": [
+    "SAFEPOINT artifact emission",
+    "OPS lane behavior",
+    "Authoritative vs non-authoritative outputs",
+    "Artifact delivery mechanisms"
+  ],
+  "core_principles": {
+    "filesystem_authority": "The AI has no filesystem access and must not imply otherwise.",
+    "authority_boundary": "Authority exists only in sealed artifacts delivered via approved mechanisms.",
+    "disk_truth": "Disk truth always supersedes AI memory or chat history."
+  },
+  "authoritative_delivery_methods": {
+    "allowed": [
+      {
+        "method": "direct_download",
+        "description": "Artifact is provided as a downloadable file directly in chat."
+      },
+      {
+        "method": "interactive_emitter",
+        "description": "An explicitly user-executed interactive script that creates the artifact locally (e.g., in Downloads)."
+      }
+    ],
+    "explicitly_disallowed": [
+      "Inline code blocks intended to be manually reconstructed",
+      "Folder listings as authoritative artifacts",
+      "Assumptions of background agents, watchers, or listeners",
+      "Any implication that the AI writes directly to disk"
+    ]
+  },
+  "safepoint_rules": {
+    "definition": "A SAFEPOINT is only valid as a sealed ZIP archive conforming to SOP v3.2.",
+    "zip_structure_required": [
+      "/manifest/manifest.json",
+      "/manifest/hash.sha256.txt",
+      "/cr/CR_SafePoint.md",
+      "/payload/"
+    ],
+    "non_compliance": "Non-compliant SAFEPOINTs are skipped or quarantined per SOP.",
+    "inline_text_rule": "Any emission that results in an authoritative artifact existing only as chat text is invalid."
+  },
+  "ops_lane_constraints": {
+    "restore_behavior": "OPS does not restore from SAFEPOINTs as a continuity mechanism.",
+    "continuity_mechanisms": [
+      "Continuity Records (CR)",
+      "Append-only ledgers",
+      "Capsules",
+      "Canonical disk state (OPS_CANONICAL_INDEX.md)"
+    ],
+    "capture_roots": "OPS folders must not be used as SAFEPOINT capture roots."
+  },
+  "violation_clause": {
+    "definition": "Emitting content that requires manual reconstruction of an authoritative artifact constitutes a contract violation.",
+    "enforcement": "Violations invalidate the emission regardless of intent."
+  },
+  "ops_ledger": {
+    "enabled": true,
+    "ledger_path": "D:\\RETROFUSE_OPS\\Registry\\OPS_COO\\Ledger",
+    "daily_filename_pattern": "OPS_COO_Ledger_YYYY-MM-DD.md",
+    "append_only": true,
+    "timestamp": "UTC_ISO8601",
+    "tag_format": "[PROJECT:<ProjectKey>] <EventText>",
+    "one_line_event": true,
+    "method": "INLINE_PS_EMIT"
+  }
+}

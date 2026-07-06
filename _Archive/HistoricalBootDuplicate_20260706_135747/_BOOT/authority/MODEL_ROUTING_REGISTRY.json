@@ -1,0 +1,103 @@
+{
+  "schema_version": "v1.0",
+  "registry_name": "GEN7-OPS Model Routing Registry",
+  "last_updated": "2026-04-18T22:20:00Z",
+  "tiers": [
+    {
+      "id": "tier_1_janitor_local",
+      "worker": "ollama",
+      "model": "gpt-oss:20b",
+      "priority": 1,
+      "capabilities": [
+        "extract_facts",
+        "summarize_log",
+        "triage_backlog"
+      ],
+      "constraints": {
+        "max_source_chars": 16000,
+        "timeout_seconds": 180
+      },
+      "default": true
+    },
+    {
+      "id": "tier_2_janitor_heavy",
+      "worker": "ollama",
+      "model": "gpt-oss:120b-cloud",
+      "priority": 2,
+      "capabilities": [
+        "summarize_log",
+        "classify_bundle",
+        "triage_backlog"
+      ],
+      "constraints": {
+        "max_source_chars": 64000,
+        "timeout_seconds": 300
+      },
+      "trigger": {
+        "min_source_chars": 16001,
+        "metadata_flag": "route_tier:heavy"
+      }
+    },
+    {
+      "id": "tier_3_authority_external",
+      "worker": "gemini",
+      "model": "gemini-cli",
+      "priority": 3,
+      "capabilities": [
+        "extract_facts",
+        "draft_patch",
+        "classify_bundle"
+      ],
+      "constraints": {
+        "max_source_chars": 1000000,
+        "timeout_seconds": 240
+      },
+      "trigger": {
+        "escalation_only": true,
+        "metadata_flag": "route_tier:external"
+      }
+    },
+    {
+      "id": "tier_4_orchestrator",
+      "worker": "codex",
+      "model": "codex-cli",
+      "priority": 4,
+      "capabilities": [
+        "architecture_design",
+        "code_surgery",
+        "release_gate"
+      ],
+      "constraints": {
+        "read_only_default": false
+      },
+      "trigger": {
+        "metadata_flag": "route_tier:orchestrator"
+      }
+    }
+  ],
+  "escalation_policy": {
+    "timeout": "retry_once_then_escalate",
+    "invalid_schema": "requeue_with_stricter_schema",
+    "governance_failure": "HALT_SESSION"
+  },
+  "operator_orchestration_rule": {
+    "when_operator_requests_tools_or_symphony_or_floor_or_workforce": "preserve the orchestration request and do not substitute direct senior-model labor",
+    "large_recovery_and_reconstruction_jobs": [
+      "tools enumerate, hash, validate, batch, and summarize",
+      "floor-submit resolves source refs and hands bounded work to local workers",
+      "local workers classify bounded batches",
+      "supervisors review compact reports",
+      "senior cloud models review summaries, plans, or escalation packets only",
+      "raw bulk inventory must not be ingested into senior model context",
+      "direct model scanning of broad filesystem surfaces is forbidden unless explicitly authorized"
+    ],
+    "floor_submit": "generic source-reference handoff primitive",
+    "floor_task": "plain-language intent-driven",
+    "floor_submit_scope": "explicit-source / batch-oriented",
+    "workflow_primitives": {
+      "floor_task": "plain-language, intent-driven",
+      "floor_submit": "explicit-source / batch-oriented"
+    },
+    "senior_models_must_not_replace_floor_submit": true
+  }
+}

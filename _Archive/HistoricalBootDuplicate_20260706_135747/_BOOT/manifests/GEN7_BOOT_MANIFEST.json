@@ -1,0 +1,81 @@
+{
+  "schema_version": "v1.0",
+  "artifacts": [
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\README_FIRST.md",
+      "sha256": "17E3B1FCBB385B73863EB7B9361FB1687AA697F3C426B46B8A91993819AEF28B",
+      "filename": "README_FIRST.md"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\RetroFuse_SAFEPOINT_SOP_v3.2.md",
+      "sha256": "fa4743eced33c4626f2b7915c82ef19b7c1281f6ed0b5785516773625445e2ae",
+      "filename": "RetroFuse_SAFEPOINT_SOP_v3.2.md"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\Governance_RetroFuse_v3.3.0.md",
+      "sha256": "125e27eff2e4d49d48466b497e3440459b83268de9447d27ecf7e50eedbb0caa",
+      "filename": "Governance_RetroFuse_v3.3.0.md"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\AI_Contract_Safepoint_v3.2.json",
+      "sha256": "f5a275f72fc9b319b991bd4a21d954ac63ea6d123266b89e32dbcc5bfec6c06e",
+      "filename": "AI_Contract_Safepoint_v3.2.json"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\RetroFuse_CR_Schemas_v3.1.1.json",
+      "sha256": "7afcee75575b92d47ae0975022cfc6b531c94d034457e38bfc266ed053d9f9d7",
+      "filename": "RetroFuse_CR_Schemas_v3.1.1.json"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\RetroFuse_OPS_StartupContract_OPSCOO_v1.md",
+      "sha256": "4FEC133F8057C53C638F6AC6FD7CDBE981FCDCC44D0DD82C83C12B83D9EABB31",
+      "filename": "RetroFuse_OPS_StartupContract_OPSCOO_v1.md"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\OPS_CANONICAL_INDEX.md",
+      "sha256": "A7A1C9FC1E06677ACE7354BCEF8742776ECDCBA4648C5A04E64B9B9212B67C60",
+      "filename": "OPS_CANONICAL_INDEX.md"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\OPS_Handoff_Pack_v1.3.md",
+      "sha256": "1B1AE4133D47EC47BCE95A68C2EEE5B5D4B575E18A121F774A48B13037C314D2",
+      "filename": "OPS_Handoff_Pack_v1.3.md"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\GEN7_LATEST_ACCEPTED_CAPSULE_POINTER.json",
+      "sha256": "1BB7A7DEF5E8D6F22BE617522700CE1323E14C15DDB54240B485BAA47B2F17C1",
+      "filename": "GEN7_LATEST_ACCEPTED_CAPSULE_POINTER.json"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\GEN7_CLI_Launcher_Contract.md",
+      "sha256": "0CDDEED5ACF73D7D1E819A0514EAA343FFA4E7BAD991B14719BC029D62FDCDE9",
+      "filename": "GEN7_CLI_Launcher_Contract.md"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\GEN7_Boot_Receipt_Schema.json",
+      "sha256": "51A005A7028EA802432CCE08886245E873FC48E1972425A6641A928478C49451",
+      "filename": "GEN7_Boot_Receipt_Schema.json"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\Ollama_Janitor_System_Prompt.md",
+      "sha256": "d19ca3e84e5d167dd3ba655d5053d21366bc200a3515760f0f1194be2a214c62",
+      "filename": "Ollama_Janitor_System_Prompt.md"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\Ollama_Janitor_Eval_v1.jsonl",
+      "sha256": "87e7f5d6cae3fc42092d96f49b81874c0cb3b400d2a363e7e315f99c36485eae",
+      "filename": "Ollama_Janitor_Eval_v1.jsonl"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\MODEL_ROUTING_REGISTRY.json",
+      "sha256": "4CFF587A8F9EA78992009ED3F9185BB7B4F22E265CF3E9E4F9ACBFD7DE090068",
+      "filename": "MODEL_ROUTING_REGISTRY.json"
+    },
+    {
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\GEN7\\CR_Event_Classification_Doctrine_v1.md",
+      "sha256": "4b019aab1f3f5a9cc7c094e720a021232c82464aeb420026a229f2a674aa2171",
+      "filename": "CR_Event_Classification_Doctrine_v1.md"
+    }
+  ],
+  "created_utc": "2026-06-30T12:10:00Z"
+}

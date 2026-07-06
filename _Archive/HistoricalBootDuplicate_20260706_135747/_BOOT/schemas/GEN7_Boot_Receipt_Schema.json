@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://porttoretro.local/schemas/GEN7_Boot_Receipt_Schema.json",
+  "title": "GEN7 Shared Boot Receipt Schema",
+  "type": "object",
+  "required": [
+    "timestamp",
+    "tool",
+    "boot_root",
+    "workdir",
+    "session_mode",
+    "allow_write",
+    "mirror_active",
+    "outcome"
+  ],
+  "properties": {
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "tool": {
+      "enum": [
+        "gemini",
+        "codex",
+        "ollama"
+      ]
+    },
+    "boot_root": {
+      "type": "string"
+    },
+    "workdir": {
+      "type": "string"
+    },
+    "session_mode": {
+      "enum": [
+        "interactive",
+        "worker",
+        "scheduled"
+      ]
+    },
+    "allow_write": {
+      "type": "boolean"
+    },
+    "mirror_active": {
+      "type": "boolean"
+    },
+    "integrity_drift": {
+      "type": "boolean",
+      "default": false
+    },
+    "orchestration_rule": {
+      "type": "string",
+      "description": "Use tools/floor/workforce orchestration when requested; floor-task is plain-language intent-driven; floor-submit is explicit-source / batch-oriented and resolves source refs for bounded local-worker handoff."
+    },
+    "outcome": {
+      "enum": [
+        "SUCCESS",
+        "HALTED",
+        "DEGRADED"
+      ]
+    },
+    "details": {
+      "type": "string"
+    },
+    "workflow_primitive": {
+      "type": "string",
+      "enum": [
+        "floor-task",
+        "floor-submit"
+      ],
+      "description": "floor-task is plain-language intent-driven; floor-submit is explicit-source / batch-oriented."
+    }
+  }
+}
