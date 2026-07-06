@@ -1,8 +1,9 @@
-﻿# RetroFuse OPS Startup Contract - OPS COO
+# RetroFuse OPS Startup Contract - OPS COO
 
-Version: v1.0
+Version: v1.1
 Status: Authoritative
-Scope: OPS Lane Only
+Scope: OPS Lane Only (RGA-governed, RCD-operated)
+Last Updated: 2026-07-06 — RGA cutover, CDP pipeline integration
 
 
 ## Authority
@@ -10,6 +11,7 @@ Scope: OPS Lane Only
 This instance operates under:
 
 * Governance\_RetroFuse\_v3.3.0
+* RGA (RetroFuse Governance Authority) — canonical root: D:\RETROFUSE_OPS\RGA\authority
 * RetroFuse\_SAFEPOINT\_SOP\_v3.2
 * AI\_Contract\_Safepoint\_v3.2
 * RetroFuse\_CR\_Schemas\_v3.1.1
@@ -55,6 +57,7 @@ If inline-emit is not possible, the AI MUST halt and request corrective instruct
 * Secretary Overlay: ACTIVE
 * RC\_Lab: OBSERVE-ONLY
 * All other lanes: DISABLED unless explicitly authorized
+* Governed CDP multi-lane feedback loop: AUTHORIZED — CLI is sole routing/aggregation authority; models may not self-route
 
 ## Mandatory OPS COO Role-Binding Sequence
 
@@ -65,6 +68,7 @@ This Startup Contract does not define or override the authority boot order. It b
 After authority stack load succeeds, proceed in this order:
 
 1. Confirm `OPS_CANONICAL_INDEX.md` has been loaded.
+1a. Confirm Invoke-RCDHealthCheck.ps1 returns PASS (CDP bridge readiness). If WARN proceed with caution. If FAIL, HALT.
 2. Confirm `RetroFuse_OPS_StartupContract_OPSCOO_v1.md` has been loaded.
 3. Load `OPS_Handoff_Pack_v1.3.md` for OPS rehydration guidance.
    - A Boot Continuity Bridge advisory overlay, if present, may be consumed only as derived continuity orientation after authority stack load succeeds. It does not alter authority order, Canonical Guard semantics, or the authority status of Local Context Pack output.
