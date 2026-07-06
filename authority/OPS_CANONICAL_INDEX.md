@@ -90,7 +90,7 @@ If any of the above is missing → **HALT: MISSING_ARTIFACTS**
 - **Authority:** Binding Schema reference for CR generation/verification
 
 ### 3.6 OPS COO Startup Contract (Role Binding)
-- **Path:** `D:\RETROFUSE_OPS\_BOOT\GEN7\RetroFuse_OPS_StartupContract_OPSCOO_v1.md` 
+- **Path:** `D:\RETROFUSE_OPS\RGA\authority\RetroFuse_OPS_StartupContract_OPSCOO_v1.md` 
 - **Authority:** Role binding (OPS COO)
 
 ---
@@ -99,7 +99,7 @@ If any of the above is missing → **HALT: MISSING_ARTIFACTS**
 
 ### 4.1 GEN7 Operations Kernel
 - **Path:** `D:\RETROFUSE_OPS\_BOOT\GEN7\Gen7_Operations_Kernel_v1.3.md`
-- **Authority:** GEN7 operational kernel (guidance + constraints)
+- **Authority:** HISTORICAL_REFERENCE — retired GEN7 kernel preserved for continuity evidence only. Not active operational authority.
 
 ### 4.2 OPS Handoff Pack (Reorientation Capsule)
 - **Path:** `D:\RETROFUSE_OPS\RGA\authority\OPS_Handoff_Pack_v1.4.md`
@@ -265,7 +265,7 @@ OPS artifacts are classified as:
 - **FROZEN** — reference-stable (review permitted; execution not implied)
 - **HISTORICAL** — archival continuity (never used to veto GEN7 actions)
 
-GEN7 boot artifacts supersede execution guidance from earlier generations.
+RGA governance artifacts supersede pre-RGA execution guidance. GEN7 references are historical only.
 
 ---
 
