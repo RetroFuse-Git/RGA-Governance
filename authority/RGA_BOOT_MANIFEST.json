@@ -1,0 +1,52 @@
+{
+  "authority_root": "D:\\\\RETROFUSE_OPS\\\\RGA\\\\authority",
+  "created_utc": "2026-07-07T03:29:34.1323941Z",
+  "artifacts": [
+    {
+      "filename": "README_FIRST.md",
+      "size_bytes": 3212,
+      "sha256": "BAA395836CDB13D6FAB5AE9DC5B09A49A09AC12217530A8AFAA2FCBA10C576CF"
+    },
+    {
+      "filename": "OPS_CANONICAL_INDEX.md",
+      "size_bytes": 12543,
+      "sha256": "B30BCB1F1D1C8394E1E996CFB22D9F0883702C72F82618F356EAA9A496446E91"
+    },
+    {
+      "filename": "Governance_RetroFuse_v3.3.0.md",
+      "size_bytes": 7967,
+      "sha256": "125E27EFF2E4D49D48466B497E3440459B83268DE9447D27ECF7E50EEDBB0CAA"
+    },
+    {
+      "filename": "AI_Contract_Safepoint_v3.2.json",
+      "size_bytes": 2730,
+      "sha256": "F5A275F72FC9B319B991BD4A21D954AC63EA6D123266B89E32DBCC5BFEC6C06E"
+    },
+    {
+      "filename": "RetroFuse_SAFEPOINT_SOP_v3.2.md",
+      "size_bytes": 7955,
+      "sha256": "FA4743ECED33C4626F2B7915C82EF19B7C1281F6ED0B5785516773625445E2AE"
+    },
+    {
+      "filename": "RetroFuse_CR_Schemas_v3.1.1.json",
+      "size_bytes": 8340,
+      "sha256": "7AFCEE75575B92D47AE0975022CFC6B531C94D034457E38BFC266ED053D9F9D7"
+    },
+    {
+      "filename": "RetroFuse_OPS_StartupContract_OPSCOO_v1.md",
+      "size_bytes": 4838,
+      "sha256": "8A495C3669CCF23221A7DD116AFFF077F44EA1A8E0B3A37BEF5A2D0BC5C57B48"
+    },
+    {
+      "filename": "OPS_Handoff_Pack_v1.4.md",
+      "size_bytes": 5069,
+      "sha256": "1CFC350D7AA41ADDAFFE8F55DAF6579DD8CBF66E545B00F531A91D5F24F37472"
+    },
+    {
+      "filename": "MODEL_ROUTING_REGISTRY.json",
+      "size_bytes": 3164,
+      "sha256": "4CFF587A8F9EA78992009ED3F9185BB7B4F22E265CF3E9E4F9ACBFD7DE090068"
+    }
+  ],
+  "manifest_version": "1.0"
+}
