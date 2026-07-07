@@ -1,0 +1,140 @@
+{
+  "reason": "owning directories (Tools\\ModelRouting, _Capsules, Docs) are not tracked git repos",
+  "prior_commit": "89bc7f3",
+  "receipt_type": "DISK_ONLY_DURABILITY_AUDIT",
+  "limitation": "checksum receipt proves disk state at capture time but does not version the owning files",
+  "ticket_id": "RGA-20260707-GEN7-COMPAT-RETIREMENT-012",
+  "files": [
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\Tools\\ModelRouting\\Bolt_CLI_Capture_Wrapper.py",
+      "relative_path": "Tools\\ModelRouting\\Bolt_CLI_Capture_Wrapper.py",
+      "sha256": "8B54D854DE94C8D23D13694D77C0BE1B5D40DCF5B69F7CAF1A843B037E414EAB",
+      "size_bytes": 43467,
+      "last_write_utc": "2026-07-07T03:27:18.3585369Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    },
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\Tools\\ModelRouting\\workers\\bolt_worker_arbiter_loop.py",
+      "relative_path": "Tools\\ModelRouting\\workers\\bolt_worker_arbiter_loop.py",
+      "sha256": "4C15CE78951EB5DF8B1CD37ECB614E9ABD47FAF67D9AEA51B10B228F42CF7914",
+      "size_bytes": 6838,
+      "last_write_utc": "2026-07-07T03:30:13.8537792Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    },
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\Tools\\ModelRouting\\workers\\bolt_worker_gemini.py",
+      "relative_path": "Tools\\ModelRouting\\workers\\bolt_worker_gemini.py",
+      "sha256": "3888126CE3A45B00F95D86C9CEF25DFC70E0D8860B44E02417A81E6FC9009E0D",
+      "size_bytes": 26420,
+      "last_write_utc": "2026-07-07T03:27:31.3756512Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    },
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\Tools\\ModelRouting\\workers\\bolt_worker_validator.py",
+      "relative_path": "Tools\\ModelRouting\\workers\\bolt_worker_validator.py",
+      "sha256": "70D4578970138207E2348AD0BCC000777E35AF8A165AFFB93DBB5E6A96EE72E7",
+      "size_bytes": 11747,
+      "last_write_utc": "2026-07-07T03:27:18.3585369Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    },
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\Tools\\ModelRouting\\workers\\bolt_worker_ollama.py",
+      "relative_path": "Tools\\ModelRouting\\workers\\bolt_worker_ollama.py",
+      "sha256": "42AB7AB7ABDDDA06B9E514F145DD1B8C9E371D00AA4293BAFC8AA41EE28B52B3",
+      "size_bytes": 14111,
+      "last_write_utc": "2026-07-07T03:27:18.3585369Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    },
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\_Capsules\\Tools\\capsule_engine.py",
+      "relative_path": "_Capsules\\Tools\\capsule_engine.py",
+      "sha256": "977CFAD2372A02038FC30CE6FCC2A00B58407EA1914F366C8D299749CC53B565",
+      "size_bytes": 56019,
+      "last_write_utc": "2026-07-07T03:29:19.1091216Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    },
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\_Capsules\\Boot\\capsule_rehydration_boot_loader.py",
+      "relative_path": "_Capsules\\Boot\\capsule_rehydration_boot_loader.py",
+      "sha256": "015ADC1E25B0FE26E528465D1F9CD03ABFE4D49C3BD32CFCEFAB31F738B5BD16",
+      "size_bytes": 24454,
+      "last_write_utc": "2026-07-07T03:27:31.3756512Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    },
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\_Capsules\\Tools\\build_safepoint_candidate.py",
+      "relative_path": "_Capsules\\Tools\\build_safepoint_candidate.py",
+      "sha256": "EDBC2D352777593B3407652CFAEA5126452AC7D3ED70985F747ADF90B74633D8",
+      "size_bytes": 28739,
+      "last_write_utc": "2026-07-07T03:29:02.8308834Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    },
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\_Capsules\\Tools\\Run_CapsuleEngine_WeeklyLifecycle.ps1",
+      "relative_path": "_Capsules\\Tools\\Run_CapsuleEngine_WeeklyLifecycle.ps1",
+      "sha256": "759FBE33F0F9B11FE2DA7D69CCF19F884A90BB8206EE71D042965439169F6F42",
+      "size_bytes": 34647,
+      "last_write_utc": "2026-07-07T03:27:54.8366516Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    },
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\_Capsules\\Tools\\Build-OPSSystemSafepoint.ps1",
+      "relative_path": "_Capsules\\Tools\\Build-OPSSystemSafepoint.ps1",
+      "sha256": "4DCE88E5B769B8BD7AA751857442B2824DE057CFE48C2CF4EE021BF3012888DA",
+      "size_bytes": 41696,
+      "last_write_utc": "2026-07-07T03:28:28.6302011Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    },
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\_Capsules\\Tools\\Build-OPS4WeekCapsuleSafepoint.ps1",
+      "relative_path": "_Capsules\\Tools\\Build-OPS4WeekCapsuleSafepoint.ps1",
+      "sha256": "6F766C731A53A1C6A48D0EB902B2401E4BE8030ED97BB4451145D8938D4FF0F4",
+      "size_bytes": 36446,
+      "last_write_utc": "2026-07-07T03:28:20.4356313Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    },
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\_Capsules\\Tools\\Copy-SystemSafepointPayload.ps1",
+      "relative_path": "_Capsules\\Tools\\Copy-SystemSafepointPayload.ps1",
+      "sha256": "1990BAAA777A7CFB2928AF1FC0A5678FB42FB5A1F84A855FE4EC67CA43F5F988",
+      "size_bytes": 4741,
+      "last_write_utc": "2026-07-07T03:27:54.8346426Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    },
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\_Capsules\\Tools\\Invoke-OPSBacklogRollup.ps1",
+      "relative_path": "_Capsules\\Tools\\Invoke-OPSBacklogRollup.ps1",
+      "sha256": "3A79A2F31135C99850DEA43561469F51B346A51167C6CBEE213C211530845A66",
+      "size_bytes": 34537,
+      "last_write_utc": "2026-07-07T03:27:54.8346426Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    },
+    {
+      "absolute_path": "D:\\RETROFUSE_OPS\\Docs\\RGA_PointerFirst_ContextContract.md",
+      "relative_path": "Docs\\RGA_PointerFirst_ContextContract.md",
+      "sha256": "162A132948B47FABB3205CCCD951D24BFD9835C37A8D44719E441F751BBC0081",
+      "size_bytes": 8948,
+      "last_write_utc": "2026-07-07T03:29:33.8934316Z",
+      "classification": "LIVE_RUNTIME_DISK_ONLY",
+      "preservation_status": "CHECKSUM_RECEIPT_COMMITTED"
+    }
+  ],
+  "recommendation": "future governance decision needed on whether ModelRouting and _Capsules need repos or tracked packaging",
+  "schema_version": "1.0",
+  "stage_id": "2_gen7_compat_retirement_implementation",
+  "created_utc": "2026-07-07T03:34:45.8135797Z",
+  "disk_only_file_count": 14
+}
