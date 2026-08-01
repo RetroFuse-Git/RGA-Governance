@@ -1,52 +1,134 @@
 {
-  "authority_root": "D:\\\\RETROFUSE_OPS\\\\RGA\\\\authority",
-  "created_utc": "2026-07-07T03:29:34.1323941Z",
+  "manifest_version": "1.2",
+  "authority_root": "D:\\RETROFUSE_OPS\\RGA\\authority",
+  "created_utc": "2026-08-01T23:26:56Z",
+  "total_artifacts": 18,
   "artifacts": [
     {
-      "filename": "README_FIRST.md",
-      "size_bytes": 3212,
-      "sha256": "BAA395836CDB13D6FAB5AE9DC5B09A49A09AC12217530A8AFAA2FCBA10C576CF"
+      "inclusion_class": "BOOT_CRITICAL",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\README_FIRST.md",
+      "sha256": "3DBF4FE98BAA3A4D818687DFDF016DB35747B13745E9F11E6856D7C84A6EC02F",
+      "size_bytes": 10383,
+      "filename": "README_FIRST.md"
     },
     {
-      "filename": "OPS_CANONICAL_INDEX.md",
-      "size_bytes": 12543,
-      "sha256": "B30BCB1F1D1C8394E1E996CFB22D9F0883702C72F82618F356EAA9A496446E91"
+      "inclusion_class": "BOOT_CRITICAL",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\OPS_CANONICAL_INDEX.md",
+      "sha256": "FAF2BA33753C0D67AB9612299507CE659DF663085DAC0F249EE727B1E9B6DCB6",
+      "size_bytes": 23095,
+      "filename": "OPS_CANONICAL_INDEX.md"
     },
     {
-      "filename": "Governance_RetroFuse_v3.3.0.md",
-      "size_bytes": 7967,
-      "sha256": "125E27EFF2E4D49D48466B497E3440459B83268DE9447D27ECF7E50EEDBB0CAA"
+      "inclusion_class": "BOOT_CRITICAL",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\Governance_RetroFuse_v3.3.1.md",
+      "sha256": "883A18593137330F8CF1F0FA3DAE4EFFC49782C1539505C0E7F3AB60204F73A0",
+      "size_bytes": 9502,
+      "filename": "Governance_RetroFuse_v3.3.1.md"
     },
     {
-      "filename": "AI_Contract_Safepoint_v3.2.json",
+      "inclusion_class": "BOOT_CRITICAL",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\AI_Contract_Safepoint_v3.2.json",
+      "sha256": "F5A275F72FC9B319B991BD4A21D954AC63EA6D123266B89E32DBCC5BFEC6C06E",
       "size_bytes": 2730,
-      "sha256": "F5A275F72FC9B319B991BD4A21D954AC63EA6D123266B89E32DBCC5BFEC6C06E"
+      "filename": "AI_Contract_Safepoint_v3.2.json"
     },
     {
-      "filename": "RetroFuse_SAFEPOINT_SOP_v3.2.md",
+      "inclusion_class": "BOOT_CRITICAL",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RetroFuse_SAFEPOINT_SOP_v3.2.md",
+      "sha256": "FA4743ECED33C4626F2B7915C82EF19B7C1281F6ED0B5785516773625445E2AE",
       "size_bytes": 7955,
-      "sha256": "FA4743ECED33C4626F2B7915C82EF19B7C1281F6ED0B5785516773625445E2AE"
+      "filename": "RetroFuse_SAFEPOINT_SOP_v3.2.md"
     },
     {
-      "filename": "RetroFuse_CR_Schemas_v3.1.1.json",
+      "inclusion_class": "BOOT_CRITICAL",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RetroFuse_SESSION_HANDOFF_SOP_v1.md",
+      "sha256": "423FE2975AAE94ACFE23F090382F9E955F00B882684E3B91C526B22779DEEDC1",
+      "size_bytes": 4001,
+      "filename": "RetroFuse_SESSION_HANDOFF_SOP_v1.md"
+    },
+    {
+      "inclusion_class": "BOOT_CRITICAL",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RetroFuse_CR_Schemas_v3.1.1.json",
+      "sha256": "7AFCEE75575B92D47AE0975022CFC6B531C94D034457E38BFC266ED053D9F9D7",
       "size_bytes": 8340,
-      "sha256": "7AFCEE75575B92D47AE0975022CFC6B531C94D034457E38BFC266ED053D9F9D7"
+      "filename": "RetroFuse_CR_Schemas_v3.1.1.json"
     },
     {
-      "filename": "RetroFuse_OPS_StartupContract_OPSCOO_v1.md",
+      "inclusion_class": "BOOT_CRITICAL",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RetroFuse_OPS_StartupContract_OPSCOO_v1.md",
+      "sha256": "49605EA59E13632A90F037E81BF4AAF8CB0A3CE6DCB42602C1DCF3F9FF0DF185",
       "size_bytes": 4838,
-      "sha256": "8A495C3669CCF23221A7DD116AFFF077F44EA1A8E0B3A37BEF5A2D0BC5C57B48"
+      "filename": "RetroFuse_OPS_StartupContract_OPSCOO_v1.md"
     },
     {
-      "filename": "OPS_Handoff_Pack_v1.4.md",
-      "size_bytes": 5069,
-      "sha256": "1CFC350D7AA41ADDAFFE8F55DAF6579DD8CBF66E545B00F531A91D5F24F37472"
+      "inclusion_class": "BOOT_CRITICAL",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\OPS_Handoff_Pack_v1.4.md",
+      "sha256": "ED39986EF15E21FCB8F15D544C763991DC3B3F8E9C0115283FB43E4D0C1274E0",
+      "size_bytes": 9820,
+      "filename": "OPS_Handoff_Pack_v1.4.md"
     },
     {
-      "filename": "MODEL_ROUTING_REGISTRY.json",
-      "size_bytes": 3164,
-      "sha256": "4CFF587A8F9EA78992009ED3F9185BB7B4F22E265CF3E9E4F9ACBFD7DE090068"
+      "inclusion_class": "BOOT_CRITICAL",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RGA_LANE_AUTHORITY_REGISTRY_v1.json",
+      "sha256": "3758E34A1BAC972AEEB057D70AD946DB1262B02629B603E51ADDD174274EC586",
+      "size_bytes": 3708,
+      "filename": "RGA_LANE_AUTHORITY_REGISTRY_v1.json"
+    },
+    {
+      "inclusion_class": "BOOT_CRITICAL",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RGA_CLI_LAUNCHER_CONTRACT_v2.md",
+      "sha256": "23E79D5FF6910F7875FE605A1BE485E226DFEA3B7B49B7A59685BB98AB4292D4",
+      "size_bytes": 5299,
+      "filename": "RGA_CLI_LAUNCHER_CONTRACT_v2.md"
+    },
+    {
+      "inclusion_class": "BINDING_CONTRACT",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RetroFuse_PIPELINE_ARCHITECTURE_v1.md",
+      "sha256": "6F1994EB76646AA87A2D0117AA276F6DD445B07E72BE45741C0FE53562EB92A4",
+      "size_bytes": 34056,
+      "filename": "RetroFuse_PIPELINE_ARCHITECTURE_v1.md"
+    },
+    {
+      "inclusion_class": "BINDING_CONTRACT",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RetroFuse_PIPELINE_REGISTRY_v1.json",
+      "sha256": "E5F8039FBE657626FF6C167D244D7CC5D31016520BB5B0D4B8CDF563FE4BC9FA",
+      "size_bytes": 34056,
+      "filename": "RetroFuse_PIPELINE_REGISTRY_v1.json"
+    },
+    {
+      "inclusion_class": "BINDING_CONTRACT",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\CR_Event_Classification_Doctrine_v1.md",
+      "sha256": "4B019AAB1F3F5A9CC7C094E720A021232C82464AEB420026A229F2A674AA2171",
+      "size_bytes": 2292,
+      "filename": "CR_Event_Classification_Doctrine_v1.md"
+    },
+    {
+      "inclusion_class": "BINDING_CONTRACT",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RGA_BOOT_RECEIPT_SCHEMA.json",
+      "sha256": "E5410EB10817F86219690BF5EADB5BA26E335014831EE1DE7499B43A99FDC93F",
+      "size_bytes": 3210,
+      "filename": "RGA_BOOT_RECEIPT_SCHEMA.json"
+    },
+    {
+      "inclusion_class": "SUPPORTING_REFERENCE",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\MODEL_ROUTING_REGISTRY.json",
+      "sha256": "C4EE867516790258D74D32497E9BA7A57A74652F15A95614870FB6AD56673D2B",
+      "size_bytes": 3163,
+      "filename": "MODEL_ROUTING_REGISTRY.json"
+    },
+    {
+      "inclusion_class": "SUPPORTING_REFERENCE",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RGA_CANONICAL_TOOLCHAIN_REGISTRY_v1.json",
+      "sha256": "9EC9BEF590E44968168EF57A8C576A693E54DFA05FDA7B82E6928E41F0E49D67",
+      "size_bytes": 7664,
+      "filename": "RGA_CANONICAL_TOOLCHAIN_REGISTRY_v1.json"
+    },
+    {
+      "inclusion_class": "SUPPORTING_REFERENCE",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RGA_LATEST_ACCEPTED_CAPSULE_POINTER.json",
+      "sha256": "9D980476A7551EB3E90F04A6A3C876FAA45C299938EE055AAD8E90E8FC4C8844",
+      "size_bytes": 951,
+      "filename": "RGA_LATEST_ACCEPTED_CAPSULE_POINTER.json"
     }
-  ],
-  "manifest_version": "1.0"
+  ]
 }
