@@ -435,3 +435,11 @@ Higher precedence wins. This section is the sole authority for precedence order.
 - **Per-plan roles:** PROJECTS\plan.md = WORKSPACE_COORDINATION; Tools\plan.md / RCD\plan.md / Bolt\plan.md = PROJECT_LOCAL; OPS root plan.md = NONAUTHORITATIVE_HISTORICAL (frozen pending R05 disposition).
 - **Retention thresholds:** Warning 30KB/300 lines; mandatory compaction 50KB/500 lines.
 - **Precedence note:** This registration is a discoverability pointer. It does not grant global plan authority and does not amend boot order.
+
+### 17.1 OPS Repository Remote Applicability Policy (Registered R06)
+- **Status:** ACTIVE (registered by OPS-20260801-GOVERNOR-UNITY-TRANSPARENCY-AND-CONTINUITY-REPAIR-004-R06)
+- **Policy path:** D:\RETROFUSE_OPS\Registry\OPS_COO\Policy\OPS_RepositoryRemoteApplicabilityPolicy_v1.md
+- **Binding rule:** D:\RETROFUSE_OPS is **LOCAL_ONLY** (no remote, no upstream). RetroFuse-Git/OPS-Tools.git is the Tools SUB-REPO remote and MUST NOT be treated as the OPS-root remote.
+- **Four states:** LOCAL_ONLY / REMOTE_BOUND / REMOTE_ADMISSION_REQUIRED / REMOTE_PROHIBITED.
+- **Closeout rule:** CANNOT_PUSH_NO_REMOTE is a SUCCESS for LOCAL_ONLY repos; local_head_upstream_equality = N/A.
+- **Precedence note:** Discover remote applicability before generating push requirements. No remote fabrication. No silent subproject-to-root mapping.

@@ -1,7 +1,7 @@
 {
   "manifest_version": "1.2",
   "authority_root": "D:\\RETROFUSE_OPS\\RGA\\authority",
-  "created_utc": "2026-08-01T23:26:56Z",
+  "created_utc": "2026-08-01T23:46:18Z",
   "total_artifacts": 18,
   "artifacts": [
     {
@@ -14,8 +14,8 @@
     {
       "inclusion_class": "BOOT_CRITICAL",
       "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\OPS_CANONICAL_INDEX.md",
-      "sha256": "FAF2BA33753C0D67AB9612299507CE659DF663085DAC0F249EE727B1E9B6DCB6",
-      "size_bytes": 23095,
+      "sha256": "BB742A28B4BD8448A3F91E67CDFC72A86307D14D0F40C6779AB5184EDEBDE5CC",
+      "size_bytes": 23925,
       "filename": "OPS_CANONICAL_INDEX.md"
     },
     {
