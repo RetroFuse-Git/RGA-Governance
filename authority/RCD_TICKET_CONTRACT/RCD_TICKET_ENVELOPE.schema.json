@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RCD Ticket Envelope",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["schema_version", "ticket_id", "chain_root_id", "task_class", "authority_effect", "stage_id", "cdp_targets"],
+  "properties": {
+    "schema_version": {"type": "string", "enum": ["RCD-ENVELOPE-v3", "RCD-ENVELOPE-v4"]},
+    "ticket_id": {"type": "string"},
+    "chain_root_id": {"type": "string"},
+    "title": {"type": "string"},
+    "task_class": {"type": "string", "enum": ["read_only_discovery", "bounded_implementation", "bounded_delivery", "bounded_authority_installation", "governance_review", "architecture_design"]},
+    "authority_effect": {"type": "string", "enum": ["NONE", "READ_ONLY_ANALYSIS_AUTHORIZED", "BOUNDED_IMPLEMENTATION_AUTHORIZED", "BOUNDED_DELIVERY_AUTHORIZED", "AUTHORITY_DOCUMENT_MUTATION_AUTHORIZED", "SEALED_TERMINAL"]},
+    "mission": {"type": "string"},
+    "path_block": {
+      "type": "object",
+      "properties": {
+        "source_paths": {"type": "array", "items": {"type": "string"}},
+        "output_paths": {"type": "array", "items": {"type": "string"}},
+        "forbidden_paths": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "hard_stops": {"type": "array", "items": {"type": "string"}},
+    "git_closeout_policy": {"type": "string", "enum": ["report_only", "bounded_local_commit_authorized_no_push"]},
+    "stage_id": {"type": "string"},
+    "cdp_targets": {"type": "array", "minItems": 1, "items": {"type": "string", "enum": ["chatgpt", "gemini", "deepseek"]}}
+  }
+}

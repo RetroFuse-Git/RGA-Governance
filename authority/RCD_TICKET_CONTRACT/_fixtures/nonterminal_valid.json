@@ -1,0 +1,17 @@
+{
+  "schema_version": "RCD-ENVELOPE-v3",
+  "classification": "NEXT_ROUND_AUTHORIZED",
+  "status": "NEXT_ROUND_AUTHORIZED",
+  "ticket_id": "OPS-TEST-NEXT-001-R01",
+  "chain_root_id": "OPS-TEST-NEXT-001",
+  "stage_id": "R01_TEST",
+  "next_expected_stage": "R02_NEXT_TEST",
+  "next_ticket_envelope": {
+    "schema_version": "RCD-ENVELOPE-v3",
+    "ticket_id": "OPS-TEST-NEXT-001-R02",
+    "chain_root_id": "OPS-TEST-NEXT-001",
+    "stage_id": "R02_NEXT_TEST",
+    "authority_effect": "BOUNDED_IMPLEMENTATION_AUTHORIZED",
+    "cdp_targets": [{"target_id": "chatgpt"}]
+  }
+}

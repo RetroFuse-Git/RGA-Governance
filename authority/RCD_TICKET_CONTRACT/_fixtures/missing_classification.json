@@ -1,0 +1,8 @@
+{
+  "schema_version": "RCD-ENVELOPE-v3",
+  "status": "TERMINAL_SEAL_GRANTED",
+  "ticket_id": "OPS-TEST-MISSING-001-R01",
+  "chain_root_id": "OPS-TEST-MISSING-001",
+  "stage_id": "R01_TEST",
+  "terminal_seal": "GRANTED"
+}

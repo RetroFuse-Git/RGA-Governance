@@ -1,0 +1,854 @@
+{
+  "schema_version": "RCD-ENVELOPE-v3.1",
+  "registry_id": "RetroFuse_PIPELINE_REGISTRY_v1",
+  "authority_root": "D:\\RETROFUSE_OPS\\RGA\\authority",
+  "generated_at": "2026-07-14T23:59:00Z",
+  "generated_by": "RCD-20260714-CANONICAL-PIPELINE-ARCHITECTURE-REGISTRY-027",
+  "stages": [
+    {
+      "stage_id": "authority-hydration",
+      "name": "Authority Hydration",
+      "purpose": "Load the canonical authority stack (SAFEPOINT, Session Handoff SOP, Governance, Canonical Index) before any mutation.",
+      "authority_owner": "RGA",
+      "implementation_owner": "CLI (process)",
+      "canonical_path": "D:\\RETROFUSE_OPS\\RGA\\authority\\OPS_CANONICAL_INDEX.md",
+      "artifact_state": "ACTIVE",
+      "working_directory": "D:\\RETROFUSE_OPS\\RGA\\authority",
+      "inputs": [
+        "D:\\RETROFUSE_OPS\\RGA\\authority\\RetroFuse_SAFEPOINT_SOP_v3.2.md",
+        "D:\\RETROFUSE_OPS\\RGA\\authority\\RetroFuse_SESSION_HANDOFF_SOP_v1.md",
+        "D:\\RETROFUSE_OPS\\RGA\\authority\\Governance_RetroFuse_v3.3.1.md",
+        "D:\\RETROFUSE_OPS\\RGA\\authority\\AI_Contract_Safepoint_v3.2.json",
+        "D:\\RETROFUSE_OPS\\RGA\\authority\\OPS_CANONICAL_INDEX.md"
+      ],
+      "outputs": [
+        "Loaded authority stack in memory"
+      ],
+      "invocation": "Process: read authority files in boot order",
+      "dependencies": [],
+      "tests": [
+        "Verify each authority file exists",
+        "Verify boot order is followed"
+      ],
+      "receipt_paths": [],
+      "continuity_surfaces": [
+        "OPS_CANONICAL_INDEX.md (path authority)"
+      ],
+      "git_root": "D:\\RETROFUSE_OPS",
+      "git_status": "NOT_A_REPO (empty .git, never initialized)",
+      "fallback_or_successor": null,
+      "duplicate_paths": [],
+      "duplicate_disposition": [],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    },
+    {
+      "stage_id": "plan-discovery",
+      "name": "Nearest-Plan Discovery",
+      "purpose": "Walk from working directory to nearest governed project root and load plan.md as primary active-work state, with optional workspace plan supplementation.",
+      "authority_owner": "CLI (process)",
+      "implementation_owner": "CLI (process)",
+      "canonical_path": "N/A (algorithm, not file)",
+      "artifact_state": "BOUND_EXISTING",
+      "working_directory": "Varies per session",
+      "inputs": [
+        "Working directory",
+        "Project root markers (BLUEPRINT.md, plan.md)"
+      ],
+      "outputs": [
+        "Primary plan.md path",
+        "Supplemental workspace plan.md path (if any)",
+        "PLAN_NOT_FOUND classification (if none)"
+      ],
+      "invocation": "Algorithm: walk upward from working directory to nearest governed project root",
+      "dependencies": [
+        "authority-hydration"
+      ],
+      "tests": [
+        "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt\\Tools -> Bolt\\plan.md primary, PROJECTS\\plan.md supplemental",
+        "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\RCD\\Tools\\bridge -> RCD\\plan.md primary, PROJECTS\\plan.md supplemental",
+        "D:\\RETROFUSE_OPS\\Registry\\OPS_COO\\Tools -> OPS\\plan.md primary, null supplemental"
+      ],
+      "receipt_paths": [],
+      "continuity_surfaces": [
+        "plan.md (active-work state)"
+      ],
+      "git_root": "N/A",
+      "git_status": "N/A (algorithm)",
+      "fallback_or_successor": null,
+      "duplicate_paths": [],
+      "duplicate_disposition": [],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    },
+    {
+      "stage_id": "cold-lane-hydration",
+      "name": "Cold Lane Hydration",
+      "purpose": "Hydrate a new session from the latest Daily Bundle, restoring CR, Ledger, and continuity state to the point of the last verified bundle.",
+      "authority_owner": "OPS _BOOT",
+      "implementation_owner": "OPS _BOOT",
+      "canonical_path": "D:\\RETROFUSE_OPS\\_BOOT\\DAILY\\Rehydrate_ColdLane.ps1",
+      "artifact_state": "ACTIVE",
+      "working_directory": "D:\\RETROFUSE_OPS\\_BOOT\\DAILY",
+      "inputs": [
+        "Latest Daily Bundle (continuity_latest > production_latest > signal_latest > bootstrap_default)"
+      ],
+      "outputs": [
+        "CR file for bundle opsDay",
+        "Ledger file for bundle opsDay",
+        "Continuity state (capsules, sidecars)",
+        "Production pointer advancement"
+      ],
+      "invocation": "powershell -File Rehydrate_ColdLane.ps1",
+      "dependencies": [
+        "authority-hydration",
+        "plan-discovery"
+      ],
+      "tests": [
+        "Bundle selection precedence test",
+        "Hash verification test",
+        "Manifest validation test"
+      ],
+      "receipt_paths": [
+        "D:\\RETROFUSE_OPS\\Registry\\OPS_COO\\CR_OPS\\CR_OPS_2026-07-14.md"
+      ],
+      "continuity_surfaces": [
+        "Daily Bundle archives",
+        "CR_OPS files",
+        "Ledger files"
+      ],
+      "git_root": "D:\\RETROFUSE_OPS",
+      "git_status": "NOT_TRACKED (no .git)",
+      "fallback_or_successor": null,
+      "duplicate_paths": [],
+      "duplicate_disposition": [],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    },
+    {
+      "stage_id": "secretary-extraction",
+      "name": "Secretary Continuity Extraction and Sidecars",
+      "purpose": "Extract structured continuity evidence from CLI session HeartBundles into machine-readable JSON sidecars for deterministic classification, supersession, and bundle inclusion.",
+      "authority_owner": "Bolt Tools (OPS cross-cutting)",
+      "implementation_owner": "Bolt Tools",
+      "canonical_path": "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt\\Tools\\Ollama_Secretary.py",
+      "artifact_state": "ACTIVE",
+      "working_directory": "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt\\Tools",
+      "inputs": [
+        "CLI session HeartBundles (.md files)"
+      ],
+      "outputs": [
+        "Continuity sidecars (.continuity.json files)",
+        "Supersession-classified records"
+      ],
+      "invocation": "python Ollama_Secretary.py (includes continuity extraction)",
+      "dependencies": [
+        "cold-lane-hydration"
+      ],
+      "tests": [
+        "Sidecar schema validation",
+        "18 deterministic fields present",
+        "7 bounded interpretive fields present",
+        "Bundle size impact < 6%"
+      ],
+      "receipt_paths": [
+        "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt\\Tools\\cli_continuity_extractor.py",
+        "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt\\Tools\\cli_continuity_classifier.py",
+        "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt\\Tools\\schemas\\cli_continuity_record.schema.json"
+      ],
+      "continuity_surfaces": [
+        "HeartBundle archives",
+        "Continuity sidecar files"
+      ],
+      "git_root": "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt",
+      "git_status": "DIRTY (staged + unstaged changes)",
+      "fallback_or_successor": null,
+      "duplicate_paths": [],
+      "duplicate_disposition": [],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    },
+    {
+      "stage_id": "supersession-classification",
+      "name": "Terminal and Supersession Classification",
+      "purpose": "Classify CLI records by terminality and supersede lower-ranked records with higher-ranked evidence.",
+      "authority_owner": "Bolt Tools (OPS cross-cutting)",
+      "implementation_owner": "Bolt Tools",
+      "canonical_path": "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt\\Tools\\cli_continuity_classifier.py",
+      "artifact_state": "ACTIVE",
+      "working_directory": "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt\\Tools",
+      "inputs": [
+        "Continuity sidecars from secretary-extraction"
+      ],
+      "outputs": [
+        "Supersession-classified records",
+        "Terminal evidence set"
+      ],
+      "invocation": "python cli_continuity_classifier.py (called by Secretary pipeline)",
+      "dependencies": [
+        "secretary-extraction"
+      ],
+      "tests": [
+        "Supersession hierarchy test (rank ordering)",
+        "Activity classification test",
+        "Continuity significance test"
+      ],
+      "receipt_paths": [
+        "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt\\Tools\\WriteSessionCloseout.py"
+      ],
+      "continuity_surfaces": [
+        "Continuity sidecar files"
+      ],
+      "git_root": "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt",
+      "git_status": "DIRTY (staged + unstaged changes)",
+      "fallback_or_successor": null,
+      "duplicate_paths": [],
+      "duplicate_disposition": [],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    },
+    {
+      "stage_id": "momentum-generation",
+      "name": "Momentum Generation",
+      "purpose": "Generate a structured sky-high operational summary from structured continuity sidecars for Daily Bundle inclusion and session orientation.",
+      "authority_owner": "Bolt Tools (generator) + OPS _BOOT (caller)",
+      "implementation_owner": "Bolt Tools",
+      "canonical_path": "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt\\Tools\\cli_momentum_generator.py",
+      "artifact_state": "ACTIVE",
+      "working_directory": "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt\\Tools",
+      "inputs": [
+        "Continuity sidecars from supersession-classification"
+      ],
+      "outputs": [
+        "Momentum contract (sky-high summary)"
+      ],
+      "invocation": "D:\\RETROFUSE_OPS\\_BOOT\\DAILY\\Emit-MomentumFromChainState.ps1 (calls cli_momentum_generator.py)",
+      "dependencies": [
+        "supersession-classification"
+      ],
+      "tests": [
+        "Momentum contract field validation",
+        "Fallback to Watcher DB test",
+        "Terminal achievements visible test"
+      ],
+      "receipt_paths": [
+        "D:\\RETROFUSE_OPS\\_BOOT\\DAILY\\Emit-MomentumFromChainState.ps1"
+      ],
+      "continuity_surfaces": [
+        "Momentum contract in Daily Bundle"
+      ],
+      "git_root": "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt (generator); D:\\RETROFUSE_OPS (caller)",
+      "git_status": "DIRTY (generator staged in Bolt); NOT_TRACKED (caller)",
+      "fallback_or_successor": "Watcher DB (if no sidecars available)",
+      "duplicate_paths": [],
+      "duplicate_disposition": [],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    },
+    {
+      "stage_id": "bundle-construction",
+      "name": "Daily Bundle Construction",
+      "purpose": "Assemble all operational evidence (CR, Ledger, continuity sidecars, momentum, receipts) into a single verifiable bundle for distribution.",
+      "authority_owner": "OPS COO",
+      "implementation_owner": "OPS COO",
+      "canonical_path": "D:\\RETROFUSE_OPS\\Registry\\OPS_COO\\Tools\\OpsCOO_Build_DailyBundle_v1.ps1",
+      "artifact_state": "ACTIVE",
+      "working_directory": "D:\\RETROFUSE_OPS\\Registry\\OPS_COO\\Tools",
+      "inputs": [
+        "CR file for opsDay",
+        "Ledger file for opsDay",
+        "Continuity sidecars",
+        "Momentum contract",
+        "Receipts"
+      ],
+      "outputs": [
+        "OPS_DailyBundle_YYYY-MM-DD.zip",
+        "Manifest (SHA-256 sealed)"
+      ],
+      "invocation": "powershell -File OpsCOO_Build_DailyBundle_v1.ps1",
+      "dependencies": [
+        "momentum-generation",
+        "cold-lane-hydration"
+      ],
+      "tests": [
+        "12 required tools validation",
+        "Manifest seal check",
+        "SAFEPOINT leakage check",
+        "Authority role validation"
+      ],
+      "receipt_paths": [
+        "D:\\RETROFUSE_OPS\\Registry\\OPS_COO\\CR_OPS\\CR_OPS_2026-07-14.md"
+      ],
+      "continuity_surfaces": [
+        "Daily Bundle archives"
+      ],
+      "git_root": "D:\\RETROFUSE_OPS",
+      "git_status": "NOT_TRACKED (no .git)",
+      "fallback_or_successor": null,
+      "duplicate_paths": [],
+      "duplicate_disposition": [],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    },
+    {
+      "stage_id": "provider-formatting",
+      "name": "Provider-Specific Bundle Formatting",
+      "purpose": "Format the canonical Daily Bundle into provider-specific formats for each governed AI lane.",
+      "authority_owner": "RCD",
+      "implementation_owner": "RCD",
+      "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Providers\\DeepSeek\\Scripts\\Format-DailyBundleForDeepSeek.ps1",
+      "artifact_state": "ACTIVE",
+      "working_directory": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Providers\\DeepSeek\\Scripts",
+      "inputs": [
+        "OPS_DailyBundle_YYYY-MM-DD.zip"
+      ],
+      "outputs": [
+        "Provider-formatted bundle (DeepSeek-specific)"
+      ],
+      "invocation": "powershell -File Format-DailyBundleForDeepSeek.ps1 [-Deliver] [-DryRun]",
+      "dependencies": [
+        "bundle-construction"
+      ],
+      "tests": [
+        "Construction-only default test (no -Deliver = no dispatch)",
+        "-DryRun flag test (zero dispatch proof)",
+        "-SkipChatGPT default test"
+      ],
+      "receipt_paths": [
+        "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\Format-DailyBundleForDeepSeek.ps1 (COMPATIBILITY_STUB)",
+        "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\_Archive\\Format-DailyBundleForDeepSeek_Rev2_RETIRED_20260714.ps1 (HISTORICAL)"
+      ],
+      "continuity_surfaces": [
+        "Provider-formatted bundle archives"
+      ],
+      "git_root": "D:\\RETROFUSE_OPS\\Tools\\RCD",
+      "git_status": "DIRTY (unstaged changes)",
+      "fallback_or_successor": null,
+      "duplicate_paths": [
+        "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\Format-DailyBundleForDeepSeek.ps1",
+        "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\_Archive\\Format-DailyBundleForDeepSeek_Rev2_RETIRED_20260714.ps1"
+      ],
+      "duplicate_disposition": [
+        "COMPATIBILITY_STUB (fail-closed exit 1)",
+        "HISTORICAL (retired Rev 2)"
+      ],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    },
+    {
+      "stage_id": "transport-selection",
+      "name": "Transport Selection",
+      "purpose": "Select the governed transport for each round leg based on task type, not model preference.",
+      "authority_owner": "CLI",
+      "implementation_owner": "CLI (process)",
+      "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Artifacts\\RCD-CLI-ROUTING-CONTRACT-v1.2.md",
+      "artifact_state": "ACTIVE",
+      "working_directory": "N/A (contract-based)",
+      "inputs": [
+        "Task type",
+        "Available transports (CDP, WebMCP, backend, manual relay)"
+      ],
+      "outputs": [
+        "Selected transport per round leg",
+        "Transport selection reason"
+      ],
+      "invocation": "CLI decision per 8-task matrix in Routing Contract v1.2",
+      "dependencies": [
+        "authority-hydration"
+      ],
+      "tests": [
+        "8-task transport matrix test",
+        "Anti-routing rule test (no model self-selects)",
+        "No silent transport switching test"
+      ],
+      "receipt_paths": [
+        "D:\\RETROFUSE_OPS\\Tools\\RCD\\Artifacts\\RCD-CROSSLANE-ENVELOPE-v3.1.md"
+      ],
+      "continuity_surfaces": [
+        "Routing Contract v1.2",
+        "Envelope v3.1"
+      ],
+      "git_root": "D:\\RETROFUSE_OPS\\Tools\\RCD",
+      "git_status": "DIRTY (unstaged changes)",
+      "fallback_or_successor": "WebMCP (where proven); Backend (conditionally admitted); Manual Relay (degraded emergency only)",
+      "duplicate_paths": [
+        "D:\\RETROFUSE_OPS\\Tools\\RCD\\Artifacts\\RCD-CLI-ROUTING-CONTRACT-v1.1.md",
+        "D:\\RETROFUSE_OPS\\Tools\\RCD\\Artifacts\\RCD-CLI-ROUTING-CONTRACT-v1.md"
+      ],
+      "duplicate_disposition": [
+        "HISTORICAL (superseded by v1.2)",
+        "HISTORICAL (superseded by v1.2)"
+      ],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    },
+    {
+      "stage_id": "serialized-dispatch",
+      "name": "Serialized Dispatch, Provider Cooldowns, Lockouts, and Circuit Breakers",
+      "purpose": "Dispatch artifacts to providers in serialized order with cooldowns, lockouts, and circuit breakers to prevent provider overload.",
+      "authority_owner": "RCD",
+      "implementation_owner": "RCD (design stage)",
+      "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\bridge\\rcd_cdp_return.py",
+      "artifact_state": "ACTIVE (CDP dispatch); DESIGN_ONLY (circuit breaker)",
+      "working_directory": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\bridge",
+      "inputs": [
+        "Artifact to dispatch",
+        "Target provider",
+        "Selected transport"
+      ],
+      "outputs": [
+        "Dispatch receipt",
+        "Provider response (if applicable)"
+      ],
+      "invocation": "python rcd_cdp_return.py (CDP); backend architecture (design)",
+      "dependencies": [
+        "transport-selection",
+        "provider-formatting"
+      ],
+      "tests": [
+        "Per-provider lock test",
+        "Cooldown window test",
+        "3-failure lockout test",
+        "Circuit breaker state machine test (design)"
+      ],
+      "receipt_paths": [
+        "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\RCD\\Tools\\bridge\\rcd_cdp_return.py (FROZEN_REFERENCE, 83,100 bytes)"
+      ],
+      "continuity_surfaces": [
+        "Dispatch receipts"
+      ],
+      "git_root": "D:\\RETROFUSE_OPS\\Tools\\RCD",
+      "git_status": "DIRTY (unstaged changes)",
+      "fallback_or_successor": null,
+      "duplicate_paths": [
+        "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\RCD\\Tools\\bridge\\rcd_cdp_return.py"
+      ],
+      "duplicate_disposition": [
+        "FROZEN_REFERENCE (archive copy, 1,161 byte delta from canonical)"
+      ],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    },
+    {
+      "stage_id": "feedback-capture",
+      "name": "Full Response Capture, Persistence, Retrieval, and Authority Consumption",
+      "purpose": "Capture full provider responses, persist them as immutable artifacts, enable retrieval by SHA-256, and deliver to authority for consumption.",
+      "authority_owner": "RCD",
+      "implementation_owner": "RCD",
+      "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\bridge\\rcd_cdp_return.py",
+      "artifact_state": "ACTIVE",
+      "working_directory": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\bridge",
+      "inputs": [
+        "Provider response (raw text)"
+      ],
+      "outputs": [
+        "Full response text artifact (.txt)",
+        "JSON metadata artifact (with SHA-256)",
+        "Feedback bundle for authority"
+      ],
+      "invocation": "python rcd_cdp_return.py (response capture and persistence)",
+      "dependencies": [
+        "serialized-dispatch"
+      ],
+      "tests": [
+        "Full response capture test (no truncation)",
+        "SHA-256 verification test",
+        "Artifact persistence test",
+        "Retrieval by hash test"
+      ],
+      "receipt_paths": [
+        "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\bridge\\rcd_five_file_delivery.cjs"
+      ],
+      "continuity_surfaces": [
+        "Response artifacts",
+        "Feedback bundles"
+      ],
+      "git_root": "D:\\RETROFUSE_OPS\\Tools\\RCD",
+      "git_status": "DIRTY (unstaged changes)",
+      "fallback_or_successor": null,
+      "duplicate_paths": [
+        "D:\\RETROFUSE_OPS\\Tools\\RCD\\Artifacts\\P0_BASELINE_FREEZE_20260712\\rollback\\bridge\\rcd_five_file_delivery.cjs"
+      ],
+      "duplicate_disposition": [
+        "FROZEN_REFERENCE (baseline freeze, 70 byte delta)"
+      ],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    },
+    {
+      "stage_id": "round-closure",
+      "name": "Cross-Agent and CLI Round-Table Lifecycle",
+      "purpose": "Execute the 13-leg round lifecycle from ticket validation through terminal receipt writing, ensuring all mandatory legs complete before terminal closure.",
+      "authority_owner": "CLI",
+      "implementation_owner": "CLI (process)",
+      "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Artifacts\\RCD-CROSSLANE-ENVELOPE-v3.1.md",
+      "artifact_state": "ACTIVE",
+      "working_directory": "N/A (contract-based)",
+      "inputs": [
+        "Ticket envelope",
+        "All provider responses",
+        "Feedback bundle",
+        "Authority verdict"
+      ],
+      "outputs": [
+        "Terminal receipt",
+        "ROUND_INCOMPLETE classification (if incomplete)"
+      ],
+      "invocation": "CLI process per closure_contract in Envelope v3.1",
+      "dependencies": [
+        "feedback-capture",
+        "transport-selection"
+      ],
+      "tests": [
+        "13-leg round lifecycle test",
+        "Terminal gate test (all legs PASS or waived)",
+        "Terminal forbidden test (missing legs)",
+        "ROUND_INCOMPLETE classification test"
+      ],
+      "receipt_paths": [
+        "D:\\RETROFUSE_OPS\\Tools\\RCD\\Artifacts\\RCD-CROSSLANE-ENVELOPE-v1.md (HISTORICAL)"
+      ],
+      "continuity_surfaces": [
+        "Terminal receipts",
+        "Round artifacts"
+      ],
+      "git_root": "D:\\RETROFUSE_OPS\\Tools\\RCD",
+      "git_status": "DIRTY (unstaged changes)",
+      "fallback_or_successor": null,
+      "duplicate_paths": [
+        "D:\\RETROFUSE_OPS\\Tools\\RCD\\Artifacts\\RCD-CROSSLANE-ENVELOPE-v1.md"
+      ],
+      "duplicate_disposition": [
+        "HISTORICAL (superseded by v3.1)"
+      ],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    },
+    {
+      "stage_id": "authority-seal",
+      "name": "Authority Seal Return and CLI ACK",
+      "purpose": "Return the authority seal through governed transport, capture CLI ACK, and write terminal receipt.",
+      "authority_owner": "ChatGPT (Authority QC)",
+      "implementation_owner": "ChatGPT + CLI",
+      "canonical_path": "N/A (external process)",
+      "artifact_state": "ACTIVE",
+      "working_directory": "N/A",
+      "inputs": [
+        "Feedback bundle from feedback-capture",
+        "CLI findings"
+      ],
+      "outputs": [
+        "Authority seal (verdict + dispositions)",
+        "CLI ACK",
+        "Terminal receipt"
+      ],
+      "invocation": "ChatGPT reviews feedback, issues seal; CLI reads back and ACKs",
+      "dependencies": [
+        "round-closure",
+        "feedback-capture"
+      ],
+      "tests": [
+        "Seal contract validation (all fields present)",
+        "CLI ACK capture test",
+        "Terminal receipt completeness test"
+      ],
+      "receipt_paths": [],
+      "continuity_surfaces": [
+        "Terminal receipts"
+      ],
+      "git_root": "N/A",
+      "git_status": "N/A (external process)",
+      "fallback_or_successor": null,
+      "duplicate_paths": [],
+      "duplicate_disposition": [],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    },
+    {
+      "stage_id": "session-retirement",
+      "name": "Session Retirement and Successor Hydration",
+      "purpose": "Update plan.md with current round-table state, read back canonical path, report hash, and provide successor rehydration instructions.",
+      "authority_owner": "CLI",
+      "implementation_owner": "CLI (process)",
+      "canonical_path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RetroFuse_SESSION_HANDOFF_SOP_v1.md",
+      "artifact_state": "ACTIVE",
+      "working_directory": "Varies per session",
+      "inputs": [
+        "Current round-table state",
+        "Completed work",
+        "Unresolved questions",
+        "Artifact paths and hashes"
+      ],
+      "outputs": [
+        "Updated plan.md",
+        "Successor rehydration instructions"
+      ],
+      "invocation": "Process: update plan.md, read back, report hash, confirm successor instructions",
+      "dependencies": [
+        "authority-seal"
+      ],
+      "tests": [
+        "plan.md update test (all required fields)",
+        "Hash readback test",
+        "Successor instruction test"
+      ],
+      "receipt_paths": [
+        "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\plan.md"
+      ],
+      "continuity_surfaces": [
+        "plan.md (active-work state)"
+      ],
+      "git_root": "D:\\PORTTORETRO_ARCHIVE\\PROJECTS",
+      "git_status": "NOT_A_REPO",
+      "fallback_or_successor": null,
+      "duplicate_paths": [],
+      "duplicate_disposition": [],
+      "last_verified_at": "2026-07-14T23:00:00Z"
+    }
+  ],
+  "cross_stage_invariants": [
+    {
+      "id": "INV-001",
+      "rule": "No silent path inference.",
+      "enforcement": "All paths must be explicitly verified or classified UNKNOWN_PATH."
+    },
+    {
+      "id": "INV-002",
+      "rule": "No silent transport switching.",
+      "enforcement": "Transport changes must be explicitly declared and receipted."
+    },
+    {
+      "id": "INV-003",
+      "rule": "No terminal closure before required feedback consumption and CLI ACK.",
+      "enforcement": "Terminal gate blocks closure until all feedback consumed and CLI ACK captured."
+    },
+    {
+      "id": "INV-004",
+      "rule": "No active incomplete chain may disappear into quiet-day classification.",
+      "enforcement": "plan.md must preserve unresolved state before session retirement."
+    },
+    {
+      "id": "INV-005",
+      "rule": "No duplicate executable implementation may remain silently authoritative.",
+      "enforcement": "All duplicates must be classified and dispositioned in the registry."
+    },
+    {
+      "id": "INV-006",
+      "rule": "No plan.md may override canonical authority.",
+      "enforcement": "OPS_CANONICAL_INDEX.md is the sole path authority."
+    },
+    {
+      "id": "INV-007",
+      "rule": "No session may restart completed work when a verified handoff exists.",
+      "enforcement": "plan.md COMPLETE markers are binding."
+    },
+    {
+      "id": "INV-008",
+      "rule": "No advisory challenge may be treated as resolved without a response and disposition.",
+      "enforcement": "Silence is ROUND_INCOMPLETE."
+    },
+    {
+      "id": "INV-009",
+      "rule": "CLI remains sole routing and aggregation authority.",
+      "enforcement": "No model may self-route or self-aggregate."
+    }
+  ],
+  "durability_risks": [
+    {
+      "component": "Rehydrate_ColdLane.ps1",
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\DAILY\\Rehydrate_ColdLane.ps1",
+      "size_bytes": 52400,
+      "git_status": "NOT_TRACKED",
+      "risk": "CRITICAL - Single point of failure, no rollback capability",
+      "recommendation": "Initialize git repo at D:\\RETROFUSE_OPS and track all _BOOT executables"
+    },
+    {
+      "component": "Emit-MomentumFromChainState.ps1",
+      "path": "D:\\RETROFUSE_OPS\\_BOOT\\DAILY\\Emit-MomentumFromChainState.ps1",
+      "size_bytes": 12000,
+      "git_status": "NOT_TRACKED",
+      "risk": "CRITICAL - Single point of failure, no rollback capability",
+      "recommendation": "Track in same repo as Rehydrate_ColdLane.ps1"
+    },
+    {
+      "component": "OpsCOO_Build_DailyBundle_v1.ps1",
+      "path": "D:\\RETROFUSE_OPS\\Registry\\OPS_COO\\Tools\\OpsCOO_Build_DailyBundle_v1.ps1",
+      "size_bytes": 41000,
+      "git_status": "NOT_TRACKED",
+      "risk": "CRITICAL - Single point of failure, no rollback capability",
+      "recommendation": "Track in OPS COO git repo or migrate to OPS RCD repo"
+    },
+    {
+      "component": "OPS COO Tools directory",
+      "path": "D:\\RETROFUSE_OPS\\Registry\\OPS_COO\\Tools",
+      "size_bytes": 0,
+      "git_status": "NOT_TRACKED",
+      "risk": "HIGH - All OPS COO tools are unversioned",
+      "recommendation": "Initialize git repo at D:\\RETROFUSE_OPS\\Registry\\OPS_COO"
+    }
+  ],
+  "unknown_paths": [
+    {
+      "path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Artifacts\\RCD-CROSSLANE-ENVELOPE-v3.2.md",
+      "note": "Ticket references v3.2 but only v3.1 exists at canonical surface. v3.2 may be a planned revision not yet written."
+    }
+  ],
+  "cli_findings": [
+    {
+      "finding_id": "CLI-F-001",
+      "severity": "HIGH",
+      "category": "DURABILITY",
+      "finding": "Three critical OPS executables (Cold Lane, Momentum Emitter, Bundle Builder) are not version-controlled. Loss or corruption would require manual reconstruction from Daily Bundle archives.",
+      "affected_stages": [
+        "cold-lane-hydration",
+        "momentum-generation",
+        "bundle-construction"
+      ]
+    },
+    {
+      "finding_id": "CLI-F-002",
+      "severity": "MEDIUM",
+      "category": "CONSISTENCY",
+      "finding": "rcd_cdp_return.py has a 1,161 byte undocumented delta between archive (83,100 bytes, 983BB931) and OPS (84,261 bytes, 8B4F768E). The runtime-loaded copy is unknown without active process topology.",
+      "affected_stages": [
+        "serialized-dispatch",
+        "feedback-capture"
+      ]
+    },
+    {
+      "finding_id": "CLI-F-003",
+      "severity": "MEDIUM",
+      "category": "CONSISTENCY",
+      "finding": "RCD-CROSSLANE-ENVELOPE-v3.2 is referenced by the ticket but does not exist at the canonical surface. Only v3.1 exists. The v3.2 schema may be a planned revision.",
+      "affected_stages": [
+        "round-closure"
+      ]
+    },
+    {
+      "finding_id": "CLI-F-004",
+      "severity": "MEDIUM",
+      "category": "DUPLICATE",
+      "finding": "Format-DailyBundleForDeepSeek.ps1 has 3 copies (active 29,638 bytes, stub 743 bytes, archive 18,044 bytes). The stub is a fail-closed wrapper, but the archive copy could cause confusion.",
+      "affected_stages": [
+        "provider-formatting"
+      ]
+    },
+    {
+      "finding_id": "CLI-F-005",
+      "severity": "LOW",
+      "category": "DUPLICATE",
+      "finding": "rcd_five_file_delivery.cjs has 2 copies (active 24,846 bytes, P0 rollback 24,776 bytes, 70 byte delta). The rollback copy is a baseline freeze, not an active duplicate.",
+      "affected_stages": [
+        "feedback-capture"
+      ]
+    },
+    {
+      "finding_id": "CLI-F-006",
+      "severity": "MEDIUM",
+      "category": "GAP",
+      "finding": "No pre-dispatch health check is implemented for provider dispatch. No auto-recovery window after provider lockout. Both require operator intervention.",
+      "affected_stages": [
+        "serialized-dispatch"
+      ]
+    },
+    {
+      "finding_id": "CLI-F-007",
+      "severity": "LOW",
+      "category": "GAP",
+      "finding": "Gemini and DeepSeek have no dedicated bundle formatters. Gemini receives bundles via CDP bridge or WebMCP. This is acceptable but undocumented.",
+      "affected_stages": [
+        "provider-formatting"
+      ]
+    },
+    {
+      "finding_id": "CLI-F-008",
+      "severity": "LOW",
+      "category": "DUPLICATE",
+      "finding": "OPS_CANONICAL_INDEX.md has 3 '- Copy.md' files in the authority directory (Governance, AI Contract, SAFEPOINT). These are potential confusion risks for automated readers.",
+      "affected_stages": [
+        "authority-hydration"
+      ]
+    },
+    {
+      "finding_id": "CLI-F-009",
+      "severity": "MEDIUM",
+      "category": "CONSISTENCY",
+      "finding": "The OPS root (D:\\RETROFUSE_OPS) has an empty .git directory that was never initialized. This suggests an aborted git init attempt, leaving the false impression of version control.",
+      "affected_stages": [
+        "cold-lane-hydration",
+        "bundle-construction"
+      ]
+    },
+    {
+      "finding_id": "CLI-F-010",
+      "severity": "LOW",
+      "category": "TESTING",
+      "finding": "Plan discovery tests reference project plan.md files that may not exist (RCD\\plan.md, OPS\\plan.md). The missing fixture rule allows PLAN_NOT_FOUND, but no automated test runner exists.",
+      "affected_stages": [
+        "plan-discovery"
+      ]
+    }
+  ],
+  "gemini_responses_to_cli_findings": [],
+  "deepseek_responses_to_cli_findings": [],
+  "authority_dispositions": [
+    {
+      "finding_id": "CLI-F-001",
+      "severity": "HIGH",
+      "category": "DURABILITY",
+      "disposition": "ACCEPT",
+      "note": "Git tracking of OPS executables is authorized as a future action. No action under this ticket."
+    },
+    {
+      "finding_id": "CLI-F-002",
+      "severity": "MEDIUM",
+      "category": "CONSISTENCY",
+      "disposition": "ACCEPT",
+      "note": "Archive/OPS delta documented. OPS copy is canonical runtime version."
+    },
+    {
+      "finding_id": "CLI-F-003",
+      "severity": "MEDIUM",
+      "category": "CONSISTENCY",
+      "disposition": "ACCEPT",
+      "note": "v3.2 is a planned revision. v3.1 remains canonical until written."
+    },
+    {
+      "finding_id": "CLI-F-004",
+      "severity": "MEDIUM",
+      "category": "DUPLICATE",
+      "disposition": "ACCEPT",
+      "note": "Stub is intentional fail-closed. Archive is historical reference. No action needed."
+    },
+    {
+      "finding_id": "CLI-F-005",
+      "severity": "LOW",
+      "category": "DUPLICATE",
+      "disposition": "ACCEPT",
+      "note": "P0 rollback is a baseline freeze. No action needed."
+    },
+    {
+      "finding_id": "CLI-F-006",
+      "severity": "MEDIUM",
+      "category": "GAP",
+      "disposition": "ACCEPT",
+      "note": "Health check and auto-recovery are deferred to a future implementation ticket."
+    },
+    {
+      "finding_id": "CLI-F-007",
+      "severity": "LOW",
+      "category": "GAP",
+      "disposition": "ACCEPT",
+      "note": "Acceptable undocumented behavior. No action needed."
+    },
+    {
+      "finding_id": "CLI-F-008",
+      "severity": "LOW",
+      "category": "DUPLICATE",
+      "disposition": "ACCEPT",
+      "note": "Copy files are human-created duplicates. Cleanup authorized but not required under this ticket."
+    },
+    {
+      "finding_id": "CLI-F-009",
+      "severity": "MEDIUM",
+      "category": "CONSISTENCY",
+      "disposition": "ACCEPT",
+      "note": "Empty .git directory is an aborted init. Documented as non-repo."
+    },
+    {
+      "finding_id": "CLI-F-010",
+      "severity": "LOW",
+      "category": "TESTING",
+      "disposition": "ACCEPT",
+      "note": "PLAN_NOT_FOUND is the correct classification. Automated test runner is deferred."
+    }
+  ],
+  "material_findings_unresolved": 0
+}

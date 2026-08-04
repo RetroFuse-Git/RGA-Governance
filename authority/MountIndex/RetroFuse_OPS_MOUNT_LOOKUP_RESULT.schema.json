@@ -1,0 +1,55 @@
+{
+    "schema": "RetroFuse_OPS_MountLookupResult.v1",
+    "title": "RetroFuse OPS Mount Lookup Result",
+    "description": "Schema for a single-record lookup result from the OPS mount index. Never contains the full index.",
+    "type": "object",
+    "required": [
+        "component_key",
+        "path",
+        "diff_path",
+        "diff_impact",
+        "status"
+    ],
+    "properties": {
+        "component_key": {
+            "type": "string",
+            "description": "The exact lookup key provided in the request."
+        },
+        "path": {
+            "type": ["string", "null"],
+            "description": "Canonical Windows path for the component. null when NOT_FOUND or AMBIGUOUS."
+        },
+        "diff_path": {
+            "type": ["string", "null"],
+            "description": "Path to a diff artifact when diff_impact is PRESENT. null otherwise."
+        },
+        "diff_impact": {
+            "type": "string",
+            "enum": ["NONE", "PRESENT", "UNKNOWN"],
+            "description": "NONE: path is the last known location. PRESENT: a diff artifact exists at diff_path. UNKNOWN: cannot determine."
+        },
+        "status": {
+            "type": "string",
+            "enum": ["FOUND", "FOUND_WITH_DIFF", "NOT_FOUND", "AMBIGUOUS", "INVALID_INDEX"],
+            "description": "FOUND: single exact match. FOUND_WITH_DIFF: match with diff pointer. NOT_FOUND: no match. AMBIGUOUS: multiple matches. INVALID_INDEX: index file unreadable or malformed."
+        },
+        "match_detail": {
+            "type": ["object", "null"],
+            "description": "Optional detail from the matching index record. Present only when status is FOUND or FOUND_WITH_DIFF.",
+            "properties": {
+                "name": { "type": "string" },
+                "kind": { "type": "string", "enum": ["DIR", "FILE"] },
+                "lastWriteTime": { "type": ["string", "null"] },
+                "bytes": { "type": ["integer", "null"] },
+                "path": { "type": "string" },
+                "section": { "type": "string", "description": "Which index section contained the match: topLevel, surfaces, anchors, recent." }
+            },
+            "additionalProperties": false
+        },
+        "error": {
+            "type": ["string", "null"],
+            "description": "Human-readable error detail when status is INVALID_INDEX or AMBIGUOUS."
+        }
+    },
+    "additionalProperties": false
+}

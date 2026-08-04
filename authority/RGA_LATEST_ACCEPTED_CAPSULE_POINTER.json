@@ -1,0 +1,16 @@
+{
+  "kind": "RGA_LATEST_ACCEPTED_CAPSULE_POINTER",
+  "generated_utc": "2026-07-29T07:30:01.350203Z",
+  "runtime_authority": false,
+  "production_authority": false,
+  "safepoint_created": false,
+  "scheduled_tasks_changed": false,
+  "watcher_changed": false,
+  "authority_effect": "NONE",
+  "reference_only": true,
+  "source_candidate": "D:\\RETROFUSE_OPS\\_Capsules\\_staging_review\\sealed_20260722_161822\\LATEST_CAPSULE_POINTER_CANDIDATE.json",
+  "latest_accepted_capsule_range": "2026-07-15..2026-07-21",
+  "latest_accepted_capsule_md": "D:\\RETROFUSE_OPS\\_Capsules\\_staging_review\\sealed_20260722_161822\\weekly_capsules\\CAPSULE_ENGINE_WEEKLY_2026-07-15_2026-07-21.md",
+  "latest_accepted_capsule_json": "D:\\RETROFUSE_OPS\\_Capsules\\_staging_review\\sealed_20260722_161822\\weekly_capsules\\CAPSULE_ENGINE_WEEKLY_2026-07-15_2026-07-21.json",
+  "note": "Boot reference layer pointer promoted from lifecycle control surface."
+}

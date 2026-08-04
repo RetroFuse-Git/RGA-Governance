@@ -1,0 +1,11 @@
+{
+  "schema_version": "RCD-ENVELOPE-v3",
+  "classification": "SEALED_TERMINAL",
+  "status": "TERMINAL_SEAL_GRANTED",
+  "ticket_id": "OPS-TEST-TERMINAL-001-R01",
+  "chain_root_id": "OPS-TEST-TERMINAL-001",
+  "stage_id": "R01_TEST",
+  "authority_effect": "SEALED_TERMINAL",
+  "terminal_seal": "GRANTED",
+  "authority_verdict": "ACCEPT"
+}

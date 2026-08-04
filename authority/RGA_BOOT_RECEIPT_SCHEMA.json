@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://porttoretro.local/schemas/RGA_BOOT_RECEIPT_SCHEMA.json",
+  "title": "RGA Boot Receipt Schema v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_id",
+    "timestamp_utc",
+    "boot_phase",
+    "authority_admission",
+    "bootloader_version",
+    "bootloader_sha256",
+    "artifacts_loaded",
+    "failures"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^RGA-BOOT-RECEIPT-\\d{8}_\\d{6}$"
+    },
+    "timestamp_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "boot_phase": {
+      "type": "string",
+      "enum": ["AUTHORITY_ADMISSION", "RUNTIME_READINESS", "FULL_BOOT"]
+    },
+    "authority_admission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest_verified",
+        "manifest_sha256",
+        "trust_anchor_verified",
+        "artifacts_validated",
+        "artifacts_total",
+        "artifacts_missing",
+        "artifacts_hash_mismatch",
+        "admission_verdict"
+      ],
+      "properties": {
+        "manifest_verified": {"type": "boolean"},
+        "manifest_sha256": {"type": "string"},
+        "trust_anchor_verified": {"type": "boolean"},
+        "artifacts_validated": {"type": "integer", "minimum": 0},
+        "artifacts_total": {"type": "integer", "minimum": 0},
+        "artifacts_missing": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "artifacts_hash_mismatch": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "admission_verdict": {
+          "type": "string",
+          "enum": ["PASS", "FAIL"]
+        }
+      }
+    },
+    "runtime_readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "cdp_bridge": {"type": "string", "enum": ["PASS", "WARN", "FAIL", "SKIPPED"]},
+        "bundle_hydrated": {"type": "boolean"},
+        "plan_discovered": {"type": "boolean"},
+        "plan_path": {"type": ["string", "null"]},
+        "cr_initialized": {"type": "boolean"},
+        "ledger_initialized": {"type": "boolean"}
+      }
+    },
+    "bootloader_version": {"type": "string"},
+    "bootloader_sha256": {"type": "string"},
+    "artifacts_loaded": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["filename", "inclusion_class", "hash_verified"],
+        "properties": {
+          "filename": {"type": "string"},
+          "inclusion_class": {"type": "string", "enum": ["BOOT_CRITICAL", "BINDING_CONTRACT", "SUPPORTING_REFERENCE", "HISTORICAL_EXCLUSION"]},
+          "hash_verified": {"type": "boolean"},
+          "expected_hash": {"type": "string"},
+          "actual_hash": {"type": "string"}
+        }
+      }
+    },
+    "failures": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["code", "message"],
+        "properties": {
+          "code": {"type": "string"},
+          "message": {"type": "string"},
+          "filename": {"type": "string"}
+        }
+      }
+    }
+  }
+}

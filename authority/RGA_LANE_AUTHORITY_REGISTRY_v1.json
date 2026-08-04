@@ -1,0 +1,118 @@
+{
+  "schema_version": "RGA-LANE-AUTHORITY-v1",
+  "artifact": "RGA_LANE_AUTHORITY_REGISTRY_v1.json",
+  "authority_effect": "GOVERNING",
+  "supersedes": "MODEL_ROUTING_REGISTRY.json",
+  "lanes": {
+    "chatgpt": {
+      "role": "authority_qc_final_seal",
+      "authority_level": "GOVERNING",
+      "permitted": [
+        "review_authority_artifacts",
+        "issue_final_seal",
+        "classify_tickets",
+        "route_tickets_via_cli",
+        "accept_closeout_receipts",
+        "synthesize_architecture_decisions"
+      ],
+      "prohibited": [
+        "self_route",
+        "cross_lane_write_without_envelope",
+        "implementation_without_bounded_ticket",
+        "override_disk_evidence_with_inference"
+      ]
+    },
+    "cli": {
+      "role": "sole_routing_aggregation_authority",
+      "authority_level": "GOVERNING",
+      "permitted": [
+        "route_tickets_to_targets",
+        "aggregate_multi_lane_feedback",
+        "select_governed_transport",
+        "enforce_routing_contract",
+        "execute_bounded_implementation_tickets",
+        "read_all_authority_surfaces",
+        "emit_forensic_evidence"
+      ],
+      "prohibited": [
+        "self_delegate_routing_authority",
+        "override_chatgpt_seal",
+        "modify_governance_artifacts",
+        "infer_paths_not_in_canonical_index"
+      ]
+    },
+    "gemini": {
+      "role": "mechanics_dom_validation",
+      "authority_level": "ADVISORY",
+      "permitted": [
+        "validate_dom_structure",
+        "report_selector_compatibility",
+        "surface_implementation_defects",
+        "identify_ui_drift",
+        "review_transport_mechanics"
+      ],
+      "prohibited": [
+        "seal_chains",
+        "override_chatgpt_authority",
+        "self_route",
+        "mutate_repositories_without_authorization",
+        "claim_pass_without_concrete_validation_evidence"
+      ]
+    },
+    "deepseek": {
+      "role": "reasoning_architecture_review",
+      "authority_level": "ADVISORY",
+      "permitted": [
+        "surface_architecture_contradictions",
+        "identify_structural_risks",
+        "propose_repair_strategies",
+        "challenge_design_assumptions",
+        "distinguish_implementation_defects_from_architecture_reversals"
+      ],
+      "prohibited": [
+        "seal_chains",
+        "override_chatgpt_authority",
+        "self_route",
+        "self_resolve_authority_disputes",
+        "claim_pass_if_contradictions_exist"
+      ]
+    },
+    "copilot": {
+      "role": "implementation_execution",
+      "authority_level": "DELEGATED",
+      "permitted": [
+        "implement_bounded_tickets",
+        "run_tests_and_validation",
+        "commit_bounded_changes",
+        "generate_code_and_schemas"
+      ],
+      "prohibited": [
+        "push_to_remote",
+        "override_authority_artifacts",
+        "modify_governance_documents",
+        "self_route",
+        "emit_final_seal"
+      ]
+    },
+    "local_models": {
+      "role": "batch_classification_triage",
+      "authority_level": "WORKER",
+      "permitted": [
+        "classify_bounded_batches",
+        "summarize_logs",
+        "extract_facts",
+        "triage_backlog_items"
+      ],
+      "prohibited": [
+        "make_architecture_decisions",
+        "perform_authority_actions",
+        "seal_chains",
+        "mutate_repositories",
+        "access_governance_surfaces"
+      ]
+    }
+  },
+  "excluded_lanes": [],
+  "routing_rule": "CLI is the sole routing and aggregation authority. No lane self-routes. All cross-lane exchange uses RCD-CROSSLANE-ENVELOPE-v3.1.",
+  "note": "This registry defines lane authority, not model capability. Provider availability is a separate concern declared by RGA_PROVIDER_CAPABILITY_REGISTRY_v1.json."
+}

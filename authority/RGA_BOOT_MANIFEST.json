@@ -1,14 +1,14 @@
 {
   "manifest_version": "1.2",
   "authority_root": "D:\\RETROFUSE_OPS\\RGA\\authority",
-  "created_utc": "2026-08-01T23:46:18Z",
-  "total_artifacts": 18,
+  "created_utc": "2026-08-03T21:17:48Z",
+  "total_artifacts": 19,
   "artifacts": [
     {
       "inclusion_class": "BOOT_CRITICAL",
       "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\README_FIRST.md",
-      "sha256": "3DBF4FE98BAA3A4D818687DFDF016DB35747B13745E9F11E6856D7C84A6EC02F",
-      "size_bytes": 10383,
+      "sha256": "30817A8FC75EB7E44E59C9BB38A4E5B8EF782B33EA73D6F4C7F9719887C0B1B0",
+      "size_bytes": 16450,
       "filename": "README_FIRST.md"
     },
     {
@@ -129,6 +129,13 @@
       "sha256": "9D980476A7551EB3E90F04A6A3C876FAA45C299938EE055AAD8E90E8FC4C8844",
       "size_bytes": 951,
       "filename": "RGA_LATEST_ACCEPTED_CAPSULE_POINTER.json"
+    },
+    {
+      "inclusion_class": "BINDING_CONTRACT",
+      "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RCD_TICKET_CONTRACT\\RCD_TICKET_CONTRACT_INDEX.md",
+      "sha256": "7E25D5A4C090764B518AC9F1C9EE7C1D3DBC1AD334AC6779AC0C44658407D159",
+      "size_bytes": 3408,
+      "filename": "RCD_TICKET_CONTRACT_INDEX.md"
     }
   ]
 }

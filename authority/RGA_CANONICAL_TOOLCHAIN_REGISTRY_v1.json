@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/07/schema#",
+  "registry_version": "1.1",
+  "created_utc": "2026-07-20T00:00:00Z",
+  "description": "Machine-readable canonical toolchain registry. Every session must DISCOVER -> RESOLVE -> INVOKE before implementing. Repaired 2026-07-20: Added Submit-RCDTicket.ps1 as first governed intake, corrected CDP bridge path from project archive to OPS canonical.",
+  "rule_text": {
+    "headline": "DISCOVER -> RESOLVE -> INVOKE",
+    "prohibition": "Do not rediscover, copy, wrap, fork, or reimplement an existing canonical tool before invoking it.",
+    "gap_behavior": "If the canonical entry point cannot satisfy the ticket, stop and emit CANONICAL_TOOL_CONTRACT_GAP with evidence. Do not create a parallel implementation."
+  },
+  "tools": [
+    {
+      "tool_id": "rcd_ticket_intake",
+      "purpose": "First governed ticket intake -- accept RCD/CDP envelopes and hand off to Conductor",
+      "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\Submit-RCDTicket.ps1",
+      "invocation_examples": [
+        "Submit-RCDTicket.ps1 -TicketPath <ticket.json> -FromChat",
+        "Submit-RCDTicket.ps1 -TicketInline \"<exact envelope text>\" -FromChat"
+      ],
+      "owner_layer": "rcd",
+      "prohibited_reimplementations": [
+        "direct ticket body execution",
+        "manual Conductor invocation bypassing Submit-RCDTicket",
+        "reconstructed bridge_command",
+        "manual queue_path consumption"
+      ],
+      "contract_gap_behavior": "HALT: TICKET_INTAKE_CONTRACT_GAP -- cannot hand off governed envelope to Conductor"
+    },
+    {
+      "tool_id": "rga_bootloader",
+      "purpose": "Verify RGA authority artifacts and initialize daily truth anchors",
+      "canonical_path": "D:\\RETROFUSE_OPS\\Registry\\OPS_COO\\Tools\\RGA_Authority_Bootloader.ps1",
+      "invocation_examples": ["& \"D:\\RETROFUSE_OPS\\Registry\\OPS_COO\\Tools\\RGA_Authority_Bootloader.ps1\""],
+      "owner_layer": "rga",
+      "prohibited_reimplementations": ["manual manifest hashing", "manual artifact verification", "trust-anchor validation"],
+      "contract_gap_behavior": "HALT: BOOTLOADER_CONTRACT_GAP — report missing or failing authority files"
+    },
+    {
+      "tool_id": "rga_authority_admission",
+      "purpose": "Admit, preview, or roll back RGA authority artifacts",
+      "canonical_path": "D:\\RETROFUSE_OPS\\Registry\\OPS_COO\\Tools\\Invoke-RGAAuthorityAdmission.ps1",
+      "invocation_examples": [
+        "Invoke-RGAAuthorityAdmission.ps1 -Mode Preview",
+        "Invoke-RGAAuthorityAdmission.ps1 -Mode Admit"
+      ],
+      "owner_layer": "rga",
+      "prohibited_reimplementations": ["manual manifest.json edits", "manual sidecar hash updates"],
+      "contract_gap_behavior": "HALT: ADMISSION_CONTRACT_GAP — report file that cannot be admitted through the canonical workflow"
+    },
+    {
+      "tool_id": "rcd_conductor",
+      "purpose": "Cross-lane CDP orchestration — pre-flight, guard, ExchangeRound dispatch, receipt correlation",
+      "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\Invoke-RCDConductor.ps1",
+      "invocation_examples": [
+        "Invoke-RCDConductor.ps1 -PayloadPath <ticket.txt> -Interactive:$false -WaitSec 60",
+        "Invoke-RCDConductor.ps1 -PayloadInline \"CHAIN_ROOT_ID: ...\" -WaitSec 30"
+      ],
+      "owner_layer": "rcd",
+      "prohibited_reimplementations": [
+        "page discovery",
+        "nonce correlation",
+        "bridge invocation",
+        "readback logic",
+        "custom page enumeration",
+        "custom WebSocket CDP code"
+      ],
+      "contract_gap_behavior": "HALT: CONDUCTOR_CONTRACT_GAP — evidence that the Conductor cannot dispatch to the required target"
+    },
+    {
+      "tool_id": "rcd_exchange_round",
+      "purpose": "One CDP exchange round — inject, observe, classify, write receipt",
+      "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\Invoke-RCDExchangeRound.ps1",
+      "invocation_examples": [
+        "Called by Conductor internally",
+        "Standalone: Invoke-RCDExchangeRound.ps1 -Mode handoff -PayloadInline <text> -CdpTargets @(\"deepseek\")"
+      ],
+      "owner_layer": "rcd",
+      "prohibited_reimplementations": ["direct inject_and_observe calls from external scripts", "custom poll/observe logic"],
+      "contract_gap_behavior": "Report target-specific bridge limitations (e.g., stabilization interval)"
+    },
+    {
+      "tool_id": "rcd_cdp_bridge",
+      "purpose": "Python CDP WebSocket transport — last-mile delivery to provider pages",
+      "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\bridge\\rcd_cdp_return.py",
+      "invocation_examples": ["Called by ExchangeRound via Invoke-RCDFileBackedPython"],
+      "owner_layer": "rcd",
+      "prohibited_reimplementations": ["direct import from non-RCD Tools tree", "raw websocket.create_connection in custom scripts"],
+      "contract_gap_behavior": "Report bridge import or delivery failure"
+    },
+    {
+      "tool_id": "context_cache_builder",
+      "purpose": "Validate RGA authority, Daily Bundle, and Cold Lane before building context cache",
+      "canonical_path": "D:\\RETROFUSE_OPS\\ContextCache\\Build-RCDContextCache.ps1",
+      "invocation_examples": [
+        "& \"D:\\RETROFUSE_OPS\\ContextCache\\Build-RCDContextCache.ps1\"",
+        "& \"D:\\RETROFUSE_OPS\\ContextCache\\Build-RCDContextCache.ps1\" -Force"
+      ],
+      "owner_layer": "rcd",
+      "prohibited_reimplementations": ["manual JSON construction", "manual hash computation", "manual schema validation"],
+      "contract_gap_behavior": "Report admission, verification, or publication failure"
+    },
+    {
+      "tool_id": "deepseek_cache_startup",
+      "purpose": "Orchestrate RGA boot, cache build, page discovery, and Conductor invocation for DeepSeek hydration",
+      "canonical_path": "D:\\RETROFUSE_OPS\\ContextCache\\Invoke-DeepSeekCacheStartup.ps1",
+      "invocation_examples": [
+        "& \"D:\\RETROFUSE_OPS\\ContextCache\\Invoke-DeepSeekCacheStartup.ps1\"",
+        "& \"D:\\RETROFUSE_OPS\\ContextCache\\Invoke-DeepSeekCacheStartup.ps1\" -SkipDelivery",
+        "& \"D:\\RETROFUSE_OPS\\ContextCache\\Invoke-DeepSeekCacheStartup.ps1\" -CdpPort 9223"
+      ],
+      "owner_layer": "rcd",
+      "prohibited_reimplementations": ["direct inject_and_observe_deepseek_response calls", "custom DeepSeek page discovery"],
+      "contract_gap_behavior": "Report which step (boot, build, discovery, Conductor) failed"
+    },
+    {
+      "tool_id": "bolt_copilot_wrapper",
+      "purpose": "Governed CLI wrapper for Copilot lane with CacheStartup integration",
+      "canonical_path": "D:\\PORTTORETRO_ARCHIVE\\PROJECTS\\Bolt\\Tools\\bolt-copilot.ps1",
+      "invocation_examples": [
+        "bcp -CacheStartup (read-only)",
+        "bcpw -CacheStartup (write)"
+      ],
+      "owner_layer": "bolt",
+      "prohibited_reimplementations": ["manual gh copilot invocation outside wrapper"],
+      "contract_gap_behavior": "Report wrapper guard or flag error"
+    },
+    {
+      "tool_id": "rcd_cdp_handoff_gui",
+      "purpose": "Operator WPF GUI for CDP handoff and browser management",
+      "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\RCD_CDP_Handoff_GUI.ps1",
+      "invocation_examples": ["& \"D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\RCD_CDP_Handoff_GUI.ps1\""],
+      "owner_layer": "rcd",
+      "prohibited_reimplementations": ["custom WPF or CDP handoff UI outside canonical tool"],
+      "contract_gap_behavior": "Report GUI launch or CDP probe failure"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "schema_id": "RCD-AUTHORITY-RESPONSE-SCHEMA-v3",
+  "schema_version": "3.0.0",
+  "authority": "RGA",
+  "controlled_by": "ConvertFrom-RCDContinuationJson (RCD-NoninteractiveContinuation.ps1)",
+  "parser_rule": "STRICT_JSON_ONLY_FAIL_CLOSED",
+
+  "required_top_level_fields": [
+    {"field": "schema_version", "type": "string", "must_equal": "RCD-ENVELOPE-v3", "note": "Must match RCD-ENVELOPE-v3"},
+    {"field": "classification", "type": "string", "allowed": ["SEALED_TERMINAL", "NEXT_ROUND_AUTHORIZED", "HARD_HALT", "OPERATOR_ACTION_REQUIRED"]},
+    {"field": "status", "type": "string", "allowed": ["TERMINAL_SEAL_GRANTED", "NEXT_ROUND_AUTHORIZED", "BLOCKED", "OPERATOR_ACTION_REQUIRED"]},
+    {"field": "ticket_id", "type": "string", "note": "Must match the expected ticket_id"},
+    {"field": "chain_root_id", "type": "string", "note": "Must match the expected chain_root_id"},
+    {"field": "stage_id", "type": "string", "note": "Must match the expected stage_id"}
+  ],
+
+  "correlation_fields_when_prior_round_exists": [
+    {"field": "round_id", "type": "string", "note": "Required when continuation follows a provider round"},
+    {"field": "nonce", "type": "string", "note": "Must match the issued nonce"}
+  ],
+
+  "terminal_seal_rules": {
+    "accepted_values": ["GRANTED", "SEALED", "TRUE"],
+    "field_name": "terminal_seal",
+    "verdict_field": "authority_verdict",
+    "verdict_accepted": ["ACCEPT", "ACCEPTED", "PASS", "SEALED_TERMINAL"],
+    "rule": "terminal_seal in [GRANTED, SEALED, TRUE] alone = seal implied",
+    "rule_with_verdict": "terminal_seal in [GRANTED, SEALED, TRUE] AND authority_verdict in [ACCEPT, ACCEPTED, PASS, SEALED_TERMINAL] = seal explicit"
+  },
+
+  "hard_halt_rules": {
+    "field_name": "classification",
+    "halt_values": ["BLOCKED", "HARD_HALT", "REJECTED"],
+    "status_halt_pattern": "^(BLOCKED|HARD_HALT|REJECTED|FAILED)",
+    "rule": "classification in halt_values OR status matches halt_pattern = HARD_HALT"
+  },
+
+  "continuation_rules": {
+    "classification_values": ["AUTHORIZED_CONTINUATION", "AUTHORIZATION", "CONTINUE"],
+    "status_values": ["NEXT_ROUND_AUTHORIZED"],
+    "verdict_values": ["AUTHORIZE", "AUTHORIZED", "NEXT_ROUND_AUTHORIZED"],
+    "next_fields_required": ["next_expected_stage", "next_ticket_envelope"]
+  },
+
+  "operator_action_rule": {
+    "field_name": "operator_only_action",
+    "status_value": "OPERATOR_ACTION_REQUIRED"
+  },
+
+  "rejection_rules": [
+    "Missing ANY required field = AUTHORITY_FIELD_MISSING_<FIELDNAME> (HARD_HALT)",
+    "Response not valid JSON = AUTHORITY_RESPONSE_INVALID_JSON (HARD_HALT)",
+    "Response empty = AUTHORITY_RESPONSE_EMPTY (HARD_HALT)",
+    "Natural language only (no valid JSON) = HARD_HALT",
+    "Correlation mismatch on expected fields = AUTHORITY_CORRELATION_MISMATCH_<FIELDNAME> (HARD_HALT)",
+    "Continuation without next_expected_stage or next_ticket_envelope = AUTHORITY_NEXT_TICKET_MISSING (HARD_HALT)"
+  ],
+
+  "format_rule": "Return ONE complete JSON object. NO natural language wrapper, NO markdown fences, NO explanatory text.",
+  "non_authorized_patterns": ["natural-language-only seal text", "keyword scanning", "fuzzy matching", "regex fallback", "permissive field aliases"]
+}

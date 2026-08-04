@@ -10,7 +10,7 @@ Last Updated: 2026-07-06 — RGA cutover, CDP pipeline integration
 
 This instance operates under:
 
-* Governance\_RetroFuse\_v3.3.0
+* Governance\_RetroFuse\_v3.3.1
 * RGA (RetroFuse Governance Authority) — canonical root: D:\RETROFUSE_OPS\RGA\authority
 * RetroFuse\_SAFEPOINT\_SOP\_v3.2
 * AI\_Contract\_Safepoint\_v3.2
@@ -70,7 +70,7 @@ After authority stack load succeeds, proceed in this order:
 1. Confirm `OPS_CANONICAL_INDEX.md` has been loaded.
 1a. Confirm Invoke-RCDHealthCheck.ps1 returns PASS (CDP bridge readiness). If WARN proceed with caution. If FAIL, HALT.
 2. Confirm `RetroFuse_OPS_StartupContract_OPSCOO_v1.md` has been loaded.
-3. Load `OPS_Handoff_Pack_v1.3.md` for OPS rehydration guidance.
+3. Load `OPS_Handoff_Pack_v1.4.md` for OPS rehydration guidance.
    - A Boot Continuity Bridge advisory overlay, if present, may be consumed only as derived continuity orientation after authority stack load succeeds. It does not alter authority order, Canonical Guard semantics, or the authority status of Local Context Pack output.
 4. Run or request execution of `OpsCOO_Bootstrap.ps1` only if:
    - it is declared by the Canonical Index, Path Registry, active CR, or explicit human instruction;

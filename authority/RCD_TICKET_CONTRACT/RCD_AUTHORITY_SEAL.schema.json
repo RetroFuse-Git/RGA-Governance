@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "RCD Authority Seal",
+  "version": "1.0.0",
+  "type": "object",
+  "required": ["schema_version", "seal_id", "seal_type", "authority_lane", "terminal_verdict", "chain_status"],
+  "properties": {
+    "schema_version": {"type": "string"},
+    "seal_id": {"type": "string"},
+    "seal_type": {"type": "string", "enum": ["terminal_authority_seal", "architecture_design_seal", "terminal_git_closeout_seal", "terminal_documentation_reconciliation_seal", "terminal_baseline_seal"]},
+    "authority_lane": {"type": "string"},
+    "terminal_verdict": {"type": "string", "enum": ["SEALED_TERMINAL_PASS", "SEALED_TERMINAL_PASS_WITH_FINDINGS", "BLOCKED"]},
+    "chain_status": {"type": "string", "enum": ["CLOSED", "HALTED", "SUSPENDED"]},
+    "sealed_findings": {"type": "array", "items": {"type": "string"}},
+    "deferred_items": {"type": "array"},
+    "accepted_evidence": {"type": "object"}
+  }
+}
