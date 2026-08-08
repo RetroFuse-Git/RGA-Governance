@@ -6,3 +6,6 @@ reports/
 __pycache__/
 *.pyc
 .DS_Store
+# R02 five-repo reconciliation: documented archive/superseded surfaces (preserved on disk, excluded)
+_Archive/
+authority/CHATGPT_HYBRID_HYDRATION_BOOTSTRAP_v1.md

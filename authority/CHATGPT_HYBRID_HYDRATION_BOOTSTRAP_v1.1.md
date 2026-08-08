@@ -81,15 +81,10 @@ Drive folder:
 
 `G:\My Drive\RetroFuse_Backup\DailyBundles`
 
-Current pointer filename:
-
-`DAILY_BUNDLE_DRIVE_POINTER_Latest.json`
-
-Accepted pointer SHA-256 reported by sealed Chain 089:
-
-`15B05ACF1FA664E1E97EB99863133A6BD9894B73DA7708A1B751B17A7602218A`
-
-The pointer is mutable by controlled rotation. Verify the currently admitted pointer identity rather than assuming the historical hash remains current.
+Resolution mode (Option B, 2026-08-06): resolve bundle identity from the ROOT
+files by filename. Pointer files (`DAILY_BUNDLE_DRIVE_POINTER_Latest.json`,
+`OPS_DailyBundle_ZIP_POINTER.txt`) are nested under `Latest\` and are NOT boot
+inputs; do not load or verify them during hydration.
 
 ---
 
@@ -100,14 +95,16 @@ The original Chain 089 bootstrap reported the following mirror locations for the
 - Schema: `G:\My Drive\RetroFuse_Backup\DailyBundles\boot_contracts\authority\RCD_TICKET_CONTRACT\RCD_AUTHORITY_RESPONSE_SCHEMA_v3.json`
 - SOP: `G:\My Drive\RetroFuse_Backup\DailyBundles\boot_contracts\authority\RCD_TICKET_CONTRACT\RCD_AUTHORITY_RESPONSE_AUTHORING_SOP.md`
 - Contract index: `G:\My Drive\RetroFuse_Backup\DailyBundles\boot_contracts\authority\RCD_TICKET_CONTRACT\RCD_TICKET_CONTRACT_INDEX.md`
-- Daily Bundle pointer: `G:\My Drive\RetroFuse_Backup\DailyBundles\DAILY_BUNDLE_DRIVE_POINTER_Latest.json`
+- Daily Bundle root (resolve by filename): `G:\My Drive\RetroFuse_Backup\DailyBundles`
 
 Accepted identities from sealed Chain 089:
 
 - Authority-response schema SHA-256: `6F462F7711A5DC183DEC3C98D5A3F2F0E8F0EE6A55A1FA246563686164AB0331`
 - Authority-response SOP SHA-256: `EEC374ABB1D04A20277B234DA89DB49BFEE4F56B37E2D88563C475C27A42C880`
 - Ticket-contract index SHA-256: `7E25D5A4C090764B518AC9F1C9EE7C1D3DBC1AD334AC6779AC0C44658407D159`
-- Daily Bundle pointer SHA-256: `15B05ACF1FA664E1E97EB99863133A6BD9894B73DA7708A1B751B17A7602218A`
+
+No pointer SHA-256 pin applies under Option B. Bundle identity is resolved and
+verified by filename at the Daily Bundle root per Step 5.
 
 Do not infer a Google Drive file ID. When connector access is available, resolve each exact path to its actual Drive file ID and verify the returned file identity. If a required ID cannot be resolved or more than one conflicting file claims the same canonical identity, halt.
 
@@ -179,28 +176,46 @@ A terminal response must use:
 
 `schema_version: "RCD-AUTHORITY-RESPONSE-v3"`
 
-### Step 5 — Resolve the Daily Bundle pointer
+### Step 5 — Resolve the Daily Bundle by filename at the Drive root
 
-After the response contract is bound, load:
+The Daily Bundle root is:
 
-`G:\My Drive\RetroFuse_Backup\DailyBundles\DAILY_BUNDLE_DRIVE_POINTER_Latest.json`
+`G:\My Drive\RetroFuse_Backup\DailyBundles`
+
+Resolve the bundle identity from the connector-visible ROOT files by filename.
+Do NOT load, pin, or verify `DAILY_BUNDLE_DRIVE_POINTER_Latest.json`; pointer
+files are nested under `Latest\` for Drive-ID preservation and audit, and are
+NOT boot inputs (Option B, 2026-08-06).
+
+Resolve and verify, by exact filename at the root:
+
+- bundle ZIP: `OPS_DailyBundle_<opsDay>.zip` (read its SHA-256 from the
+  dated manifest's `bundle.sha256` field);
+- dated manifest: `OPS_DailyBundle_<opsDay>_manifest.json` (authoritative
+  for `opsDay`, bundle SHA-256, CR path, and Ledger path);
+- latest manifest: `OPS_DailyBundle_Latest_manifest.json` (must be
+  byte-identical to the dated manifest);
+- dated ColdLane receipt: `COLDLANE_RECEIPT_<opsDay>.txt`;
+- latest ColdLane receipt: `COLDLANE_RECEIPT_LATEST.txt` (must be
+  byte-identical to the dated receipt);
+- provider hydration artifacts: `OPS_DailyBundle_Latest.txt`,
+  `OPS_DailyBundle_Latest_deepseek.txt`, `OPS_DailyBundle_Latest_gemini.txt`;
+- current-day CR and Ledger: `CR_OPS_<today>.md`, `OPS_COO_Ledger_<today>.md`;
+- working plan: `plan.md`.
 
 Verify:
 
-- exact pointer identity;
-- accepted publication state;
-- pointer SHA-256;
-- `ops_day`;
-- canonical bundle filename;
-- canonical bundle SHA-256;
-- manifest filename and SHA-256;
-- ChatGPT hydration artifact identity;
-- Gemini hydration artifact identity;
-- DeepSeek hydration artifact identity;
-- prior accepted identity, when present;
-- publication timestamp and validation status.
+- dated manifest and latest manifest SHA-256 are equal;
+- dated receipt and latest receipt SHA-256 are equal;
+- the dated manifest `opsDay` matches the receipt `opsDay`;
+- the bundle ZIP SHA-256 equals the manifest `bundle.sha256`;
+- provider hydration artifacts are present (hash equality with manifest is
+  not required; presence and freshness are sufficient).
 
-The Daily Bundle is a prior-day snapshot by design. The pointer's `ops_day` may therefore be the previous calendar day until the next successful DailyHumanFacing rotation. Do not classify a one-day difference as stale without checking the declared rotation policy and latest accepted publication evidence.
+The Daily Bundle is a prior-day snapshot by design. The `opsDay` may therefore
+be the previous calendar day until the next successful rotation. Do not
+classify a one-day difference as stale without checking the declared rotation
+policy and latest accepted publication evidence.
 
 ### Step 6 — Report bounded hydration state
 
@@ -209,7 +224,7 @@ A successful sub-bootstrap report must state:
 - authority-response schema filename and SHA-256;
 - authoring SOP filename and SHA-256;
 - ticket-contract index filename and SHA-256;
-- Daily Bundle pointer filename and SHA-256;
+- Daily Bundle root path and the resolved bundle/opsDay identity (by filename);
 - current `ops_day`;
 - current bundle filename and SHA-256;
 - whether Drive IDs were directly resolved;
@@ -261,7 +276,7 @@ Do not:
 
 ## 7. Daily Bundle Identity Contract
 
-The Drive pointer must bind one canonical Daily Bundle identity across:
+One canonical Daily Bundle identity must be consistent across:
 
 - local bundle ZIP;
 - local manifest;
@@ -275,7 +290,7 @@ All provider hydration artifacts must reference the same canonical bundle SHA-25
 
 Provider-specific behavior remains unchanged:
 
-- ChatGPT resolves the pointer and referenced hydration artifact.
+- ChatGPT resolves the bundle and hydration artifact by filename at the Drive root.
 - Gemini uses the byte-identical `.zip.txt` artifact plus the required parsing helper and boot text.
 - DeepSeek uses the byte-identical `.zip.txt` artifact plus the boot text.
 
@@ -295,8 +310,9 @@ Halt with bounded diagnostics when any of the following occurs:
 - Drive file ID cannot be resolved when exact ID verification is required;
 - schema version is not `RCD-AUTHORITY-RESPONSE-v3` for authority responses;
 - required response fields are absent or ambiguous;
-- Daily Bundle pointer is malformed, partial, unpublished, or hash-mismatched;
-- pointer references missing or mismatched provider artifacts;
+- required root files (bundle, dated/latest manifests, dated/latest receipts,
+  hydration artifacts) are missing or hash-mismatched against the dated
+  manifest identity;
 - freshness cannot be reconciled against the declared prior-day rotation policy;
 - project-file content conflicts with canonical disk authority;
 - a response would depend on DOM history, model memory, or inference.
@@ -317,10 +333,10 @@ Use only classifications permitted by the active response contract when emitting
 
 ## 9. No-Change and Rotation Rules
 
-- A no-change hydration pass must not rewrite Drive files or rotate the pointer.
-- The latest pointer must update only after every referenced artifact has been uploaded and identity-verified.
-- Do not publish a pointer to a partial, stale, missing, mismatched, or unvalidated artifact set.
-- Preserve the prior accepted pointer identity for rollback and audit when the pointer contract provides that field.
+- A no-change hydration pass must not rewrite Drive files.
+- Root files are rotated only when the dated manifest identity changes (new opsDay).
+- Do not publish a root set that is partial, stale, missing, mismatched, or unvalidated.
+- Pointer files under `Latest\` are audit/Drive-ID records and are not boot inputs.
 - Do not delete, rename, move, or deduplicate unrelated Drive files through this bootstrap.
 
 ---
@@ -353,8 +369,8 @@ The hybrid-hydration sub-bootstrap succeeds only when:
 1. Full RetroFuse authority boot has completed.
 2. The authority-response schema, SOP, and ticket-contract index are resolved and verified.
 3. ChatGPT has bound `RCD-AUTHORITY-RESPONSE-v3` as the response schema.
-4. The current Daily Bundle pointer is resolved and its freshness is reconciled.
-5. The pointer's bundle and provider identities are mutually consistent.
+4. The current Daily Bundle identity is resolved by filename at the root and its freshness is reconciled.
+5. The resolved bundle and provider hydration identities are mutually consistent.
 6. ChatGPT can state the exact current contract and bundle identities without relying on DOM history or inference.
 7. Local runtime authority remains unchanged and independent of Drive availability.
 
