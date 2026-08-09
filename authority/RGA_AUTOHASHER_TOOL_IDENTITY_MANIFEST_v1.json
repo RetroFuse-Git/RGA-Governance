@@ -1,9 +1,9 @@
 {
   "schema_version":"rga.autohasher.tool_identity_manifest.v1",
-  "manifest_id":"RGA-AUTOHASHER-121-CODEX-PICKER-CONVERGENCE-R01",
-  "tools_count":15,
-  "authority_epoch":"OPS-20260802-AUTOHASHER-CODEX-PICKER-CONVERGENCE-121:R01_EXACT_BYTE_ADMISSION",
-  "admission":{"round_id":"OPERATOR-DIRECT-OPS121-R01","authority":"operator_direct_senior_datum","ticket_id":"OPS-20260802-AUTOHASHER-CODEX-PICKER-CONVERGENCE-121-R01","decision":"ADMITTED"},
+  "manifest_id":"RGA-AUTOHASHER-R19-RUNTIME-REGISTRY-SHADOW",
+  "tools_count":18,
+  "authority_epoch":"OPS-20260809-PYTHON-CONDUCTOR-ORCHESTRATION-STRANGLER-001:R19_SHADOW_ADMISSION",
+  "admission":{"round_id":"r18-runtime-registry-shadow-scope-20260809T1900","authority":"chatgpt_via_canonical_conductor","ticket_id":"OPS-20260809-PYTHON-CONDUCTOR-ORCHESTRATION-STRANGLER-001-R18","decision":"BOUNDED_IMPLEMENTATION_AUTHORIZED"},
   "external_verifier":{"tool_id":"bootloader","canonical_path":"D:\\RETROFUSE_OPS\\Registry\\OPS_COO\\Tools\\RGA_Authority_Bootloader.ps1","role":"Availability verifier; AutoHasherMutationGate requires every exact tool pin."},
   "tools":[
     {"tool_id":"governed_reconciler","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_governed_autohasher.py","sha256":"C89649EB83D89C06E21FFB1FDB39F91E5D36A1EFF1E97701BE2D5975A8FBE098","self_update_allowed":false},
@@ -11,15 +11,18 @@
     {"tool_id":"candidate_builder","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_shortcut_registry_builder.py","sha256":"E08A0DEAD307827A4A571AD2170ED27F0EAD6A8490C8B8D52A048DE7B965F5A2","self_update_allowed":false},
     {"tool_id":"repair_wrapper","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\Repair-RGAShortcutRegistry.ps1","sha256":"4DCA3756A79A43E6D5211560C736D937888BA7010A39362E667B6E2A92B4B57B","self_update_allowed":false},
     {"tool_id":"launch_orchestrator","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_launch_orchestrator.py","sha256":"4C6D15ABE3AB48F11E4C3673F4A9682F7EB443401204388E48A9C4DDFBC628CA","verification_scope":"mutable_routing","self_update_allowed":false},
-    {"tool_id":"autonomous_shortcut_healer","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_cli_shortcut_hash_healer.py","sha256":"EFFC86A3FAED6E0AA54CE84016FD46AE88C869741C3123B62FAC44CC0CF52482","self_update_allowed":false},
+    {"tool_id":"autonomous_shortcut_healer","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_cli_shortcut_hash_healer.py","sha256":"886B023EE11F52C501A0CFD6AE216277112B0BD1C54E73D00C1422FBFE0BF967","self_update_allowed":false},
     {"tool_id":"autohasher_trust_verifier","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_autohasher_trust.py","sha256":"A1A3E35D6C2378697430851D48CBFDAD99F7A54444B68064EF37D52CE6DB26DB","self_update_allowed":false},
-    {"tool_id":"autonomous_trigger","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_autonomous_trigger.py","sha256":"6C850B01C40A1F28C86F031716B4CCC4494E7F40C0D4A13985CD64F01ADD8ED1","self_update_allowed":false},
+    {"tool_id":"autonomous_trigger","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_autonomous_trigger.py","sha256":"4A47746D068B4AF7C6F1117002E7160675F862DB6C33904C6AC38A900E90E512","self_update_allowed":false},
     {"tool_id":"autonomous_trigger_registration","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\Register-RGAAutoHasherTrigger.ps1","sha256":"93D48B3C9C842E6DAB6AC80CD7789E13EF8EA2AE0F7C89E5D20893D7AB0B312B","self_update_allowed":false},
-    {"tool_id":"self_validator","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_self_validation.py","sha256":"380716AD370F5BAA8ABADDE498572B51C66CA5F9348DC3517E0DC97175727B63","self_update_allowed":false},
+    {"tool_id":"self_validator","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_self_validation.py","sha256":"D0DA0EF2B505A56EA9F4D69D3C72C4344263E61633EE9D819BD14E4BAC0DC8EE","self_update_allowed":false},
     {"tool_id":"generation_marker_schema","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\schemas\\rga_autohasher_generation_marker.schema.json","sha256":"4A21B80499D7AE23A1266D111F4901675F08723A91363C6B7525706A5ED52AA8","self_update_allowed":false},
     {"tool_id":"evidence_schema","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\Artifacts\\RGA_GOVERNED_AUTOHASHER_EVIDENCE_SCHEMA_v1.json","sha256":"718A4CADEE66C4BC827B406FF7E563A79E7349748ABB4921631D1133005326A1","self_update_allowed":false},
     {"tool_id":"receipt_schema","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\Artifacts\\RGA_GOVERNED_AUTOHASHER_RECEIPT_SCHEMA_v1.json","sha256":"347F3F2B79F4843F83484D9B861FA4083C5C391F1921C8C11F3C05DFD6FF2FD7","self_update_allowed":false},
     {"tool_id":"transaction_contract","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\Artifacts\\RGA_GOVERNED_AUTOHASHER_TRANSACTION_CONTRACT_v1.json","sha256":"DCA1D140C285573D514A867C6B52BC0BF03516BE2AF88C9BF5D179B926ECBD9D","self_update_allowed":false},
-    {"tool_id":"policy_schema","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\Artifacts\\RGA_GOVERNED_AUTOHASHER_POLICY_SCHEMA_v1.json","sha256":"3E173DFA051AFD71CD7B7CC680C9E565B437DB83A0A88D9373085C74D33BDD97","self_update_allowed":false}
+    {"tool_id":"policy_schema","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\Artifacts\\RGA_GOVERNED_AUTOHASHER_POLICY_SCHEMA_v1.json","sha256":"3E173DFA051AFD71CD7B7CC680C9E565B437DB83A0A88D9373085C74D33BDD97","self_update_allowed":false},
+    {"tool_id":"runtime_registry_resolver","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_shortcut_registry_resolver.py","sha256":"1F989F8135803E491DA1476FE90ECE621E83D52C6B12214C410A057E126A7362","self_update_allowed":false},
+    {"tool_id":"shortcut_semantic_authority","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\config\\cli_shortcut_registry_authority.json","sha256":"8EA2BAFBBAB706CC51961F8A7DE1EE1E499CD700107E8891D30E0908A3A8B849","self_update_allowed":false},
+    {"tool_id":"shortcut_semantic_authority_schema","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\schemas\\rga_cli_shortcut_registry_authority.schema.json","sha256":"CEF52D53ADEDE4026D8E1B492DA5920FF1039A1F503F0A4FF1AFB8CF0E83FC19","self_update_allowed":false}
   ]
 }
