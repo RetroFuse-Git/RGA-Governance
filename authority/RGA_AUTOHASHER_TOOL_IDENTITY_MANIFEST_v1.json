@@ -21,7 +21,7 @@
     {"tool_id":"receipt_schema","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\Artifacts\\RGA_GOVERNED_AUTOHASHER_RECEIPT_SCHEMA_v1.json","sha256":"347F3F2B79F4843F83484D9B861FA4083C5C391F1921C8C11F3C05DFD6FF2FD7","self_update_allowed":false},
     {"tool_id":"transaction_contract","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\Artifacts\\RGA_GOVERNED_AUTOHASHER_TRANSACTION_CONTRACT_v1.json","sha256":"DCA1D140C285573D514A867C6B52BC0BF03516BE2AF88C9BF5D179B926ECBD9D","self_update_allowed":false},
     {"tool_id":"policy_schema","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\Artifacts\\RGA_GOVERNED_AUTOHASHER_POLICY_SCHEMA_v1.json","sha256":"3E173DFA051AFD71CD7B7CC680C9E565B437DB83A0A88D9373085C74D33BDD97","self_update_allowed":false},
-    {"tool_id":"runtime_registry_resolver","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_shortcut_registry_resolver.py","sha256":"1F989F8135803E491DA1476FE90ECE621E83D52C6B12214C410A057E126A7362","self_update_allowed":false},
+    {"tool_id":"runtime_registry_resolver","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_shortcut_registry_resolver.py","sha256":"A7093DCA86D40A061DBAA268F0E3AFE9AD1931F5135A69C1CE2C9B8B30800EBA","self_update_allowed":false},
     {"tool_id":"shortcut_semantic_authority","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\config\\cli_shortcut_registry_authority.json","sha256":"8EA2BAFBBAB706CC51961F8A7DE1EE1E499CD700107E8891D30E0908A3A8B849","self_update_allowed":false},
     {"tool_id":"shortcut_semantic_authority_schema","canonical_path":"D:\\RETROFUSE_OPS\\Tools\\RGA\\schemas\\rga_cli_shortcut_registry_authority.schema.json","sha256":"CEF52D53ADEDE4026D8E1B492DA5920FF1039A1F503F0A4FF1AFB8CF0E83FC19","self_update_allowed":false}
   ]
