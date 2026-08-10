@@ -702,7 +702,7 @@ The following critical OPS executables are NOT version-controlled:
 ### 20.4 Git Governance Rules
 
 - Exact-file staging only — never `git add .` or `git add -A`.
-- No `git push` — human-only.
+- Push is operator-authorized — declared at the top of the ticket or granted by explicit operator request. The operator may authorize push at any time (Authority Rule #1 is senior). Structural prohibitions (force push, history rewrite, `git clean`) require an RF-level operator override.
 - Bolt: commit/push only through `Tools\Bolt_Promote_MirrorChanges.ps1 -OperatorAuthorized`.
 
 ---

@@ -1,7 +1,7 @@
 {
   "manifest_version": "1.2",
   "authority_root": "D:\\RETROFUSE_OPS\\RGA\\authority",
-  "created_utc": "2026-08-03T21:17:48Z",
+  "created_utc": "2026-08-10T13:42:19Z",
   "total_artifacts": 19,
   "artifacts": [
     {
@@ -84,8 +84,8 @@
     {
       "inclusion_class": "BINDING_CONTRACT",
       "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RetroFuse_PIPELINE_ARCHITECTURE_v1.md",
-      "sha256": "6F1994EB76646AA87A2D0117AA276F6DD445B07E72BE45741C0FE53562EB92A4",
-      "size_bytes": 34056,
+      "sha256": "1DB9B5F8B4F83B2DA7C54289A22D77BD6F179E8EE162F156FCAA0379176ADBD1",
+      "size_bytes": 34314,
       "filename": "RetroFuse_PIPELINE_ARCHITECTURE_v1.md"
     },
     {
