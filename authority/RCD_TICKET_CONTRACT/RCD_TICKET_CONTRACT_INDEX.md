@@ -17,6 +17,7 @@
 | RCD_TICKET_AUTHORITY_EFFECTS.md | 1.0.0 | `9D5776C203898A1E0E1468FA735ACFC1EE971AC0DCF10B48CE8F6F55E2C4C42D` | Authority-effect matrix and mutation consequences |
 | RCD_TICKET_VERSIONING_AND_MIGRATION.md | 1.0.0 | `3F8A4F770AEBE6332B3EEA506136A2B893F4E0C3A3EBEF41112E8748B0539748` | Compatibility, version negotiation, rollback |
 | RCD_TICKET_CONTROL_PLAN.md | 1.0.0 | `94CF6F7E99A893B671E455CC63AFA48D1BAEB1F3BDFC57942BBE8DC58637B185` | Operational metrics, validation gates, control limits |
+| RCD_TICKET_AUTHORING_SCOPE_POLICY_v1.0.md | 1.0.0 | `9F5D2B29780E1A443EE89FC9A68E446CE330ADEB9BAC5A55EABEE176C1977802` | Ticket authoring scope, brevity, and exclusion policy |
 
 ## Child Hash Verification Rule
 A compliant contract loader MUST verify every child file listed in this index against its declared SHA-256 before admitting any RCD ticket. Any missing, hash-mismatched, or unlisted child is a hard fail-closed. The RGA bootloader verifies this index hash against the authority manifest; child hashes are verified by the RCD contract loader at admission time.
