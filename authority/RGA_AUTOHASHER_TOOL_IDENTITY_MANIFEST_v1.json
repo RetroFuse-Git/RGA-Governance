@@ -43,7 +43,7 @@
     {
       "tool_id": "launch_orchestrator",
       "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_launch_orchestrator.py",
-      "sha256": "D7E14396DAA48CC64354360FDE49A365F28267EF07E203B5CD1F7EA517EC716C",
+      "sha256": "0C18AC8345EE7369748DE050F16AAA2FEF5C7056DE60FD81E8AAD5B2CB4B0B07",
       "verification_scope": "mutable_routing",
       "self_update_allowed": false
     },
@@ -74,7 +74,7 @@
     {
       "tool_id": "self_validator",
       "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_self_validation.py",
-      "sha256": "9A662EC1CF4A2537348ED94DC8F49F4F20D8BB7347F5F580F2B70F31D69EA397",
+      "sha256": "7C7D211F0BDF1CF9768ED6B31A3BEDC3FE034B1288FCA26A1B93D2255384DF73",
       "self_update_allowed": false
     },
     {
@@ -110,7 +110,7 @@
     {
       "tool_id": "runtime_registry_resolver",
       "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_shortcut_registry_resolver.py",
-      "sha256": "FFE5957EB6E651F5CEF3268EAE07EEEAA224DA6D663A311A2054A75B9E370DD0",
+      "sha256": "AE3D504A37359C09275864F904CFEC38A1B09749720729EF5852E0E9CB81257E",
       "self_update_allowed": false
     },
     {
