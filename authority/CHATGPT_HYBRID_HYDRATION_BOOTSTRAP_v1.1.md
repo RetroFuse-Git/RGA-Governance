@@ -1,8 +1,8 @@
 # RetroFuse ChatGPT Hybrid-Hydration Bootstrap v1.1
 
-**Status:** Active ChatGPT hybrid-hydration sub-bootstrap  
+**Status:** ACTIVE CANONICAL — supersedes v1.0 (`CHATGPT_HYBRID_HYDRATION_BOOTSTRAP_v1.md`, retained only as a superseded historical pointer)  
 **Authority:** Subordinate to canonical RetroFuse governance and `OPS_CANONICAL_INDEX.md`  
-**Canonical disk path:** `D:\RETROFUSE_OPS\RGA\authority\CHATGPT_HYBRID_HYDRATION_BOOTSTRAP_v1.md`  
+**Canonical disk path:** `D:\RETROFUSE_OPS\RGA\authority\CHATGPT_HYBRID_HYDRATION_BOOTSTRAP_v1.1.md`  
 **Purpose:** Give a fresh ChatGPT authority-QC session exact, bounded references for the active RCD authority-response contract and current Daily Bundle identity after the mandatory RetroFuse authority stack has been loaded.
 
 ---
@@ -65,15 +65,11 @@ Required files:
 
 ### 3.2 Bootstrap artifact
 
-Canonical path:
+Canonical path (this file):
 
-`D:\RETROFUSE_OPS\RGA\authority\CHATGPT_HYBRID_HYDRATION_BOOTSTRAP_v1.md`
+`D:\RETROFUSE_OPS\RGA\authority\CHATGPT_HYBRID_HYDRATION_BOOTSTRAP_v1.1.md`
 
-Accepted SHA-256 from sealed Chain 089:
-
-`3518855D3865B87720D4E750EBA133671C06F7E7510DA245A0E1141A6380BB69`
-
-This hash identifies the original v1.0 artifact. After this v1.1 correction is admitted, the canonical admission receipt, manifest, index, or operator-provided evidence must supply the replacement SHA-256. Do not continue using the old hash as the identity of revised content.
+This v1.1 file is the active canonical hybrid-hydration bootstrap and supersedes the v1.0 artifact (`CHATGPT_HYBRID_HYDRATION_BOOTSTRAP_v1.md`, retained only as a superseded historical pointer). The admitted SHA-256 of this v1.1 file is supplied by the RGA authority-admission receipt after each corrective revision; do not use a stale hash as the identity of revised content.
 
 ### 3.3 Daily Bundle mirror
 
@@ -130,9 +126,9 @@ Verify:
 
 The required authority-response schema version is:
 
-`RCD-AUTHORITY-RESPONSE-v3`
+`RCD-ENVELOPE-v3`
 
-Do not use `RCD-ENVELOPE-v3` as the schema version of a ChatGPT authority response. `RCD-ENVELOPE-v3` is the ticket/request container, not the authority-response container.
+Do NOT emit `RCD-AUTHORITY-RESPONSE-v3` as the `schema_version` field value. The schema's `required_top_level_fields.schema_version.must_equal` is `RCD-ENVELOPE-v3`; `RCD-AUTHORITY-RESPONSE-SCHEMA-v3` is the schema identifier (schema_id), not the field value.
 
 ### Step 2 — Resolve the authority-response authoring SOP
 
@@ -174,7 +170,7 @@ For terminal closure, include:
 
 A terminal response must use:
 
-`schema_version: "RCD-AUTHORITY-RESPONSE-v3"`
+`schema_version: "RCD-ENVELOPE-v3"`
 
 ### Step 5 — Resolve the Daily Bundle by filename at the Drive root
 
@@ -243,7 +239,7 @@ Minimum required shape:
 
 ```json
 {
-  "schema_version": "RCD-AUTHORITY-RESPONSE-v3",
+  "schema_version": "RCD-ENVELOPE-v3",
   "classification": "<contract-valid classification>",
   "status": "<contract-valid status>",
   "ticket_id": "<copied exactly>",
@@ -269,7 +265,7 @@ Do not:
 - infer omitted fields;
 - accept aliases not present in the contract;
 - relax parser behavior;
-- emit `RCD-ENVELOPE-v3` as the response schema version;
+- emit `RCD-AUTHORITY-RESPONSE-v3` as the `schema_version` field value (that is the schema identifier, not the field value);
 - add commentary outside the JSON object.
 
 ---
@@ -308,7 +304,7 @@ Halt with bounded diagnostics when any of the following occurs:
 - expected hash does not match;
 - more than one conflicting Drive item claims the same canonical artifact;
 - Drive file ID cannot be resolved when exact ID verification is required;
-- schema version is not `RCD-AUTHORITY-RESPONSE-v3` for authority responses;
+- schema version is not `RCD-ENVELOPE-v3` for authority responses;
 - required response fields are absent or ambiguous;
 - required root files (bundle, dated/latest manifests, dated/latest receipts,
   hydration artifacts) are missing or hash-mismatched against the dated
@@ -368,7 +364,7 @@ The hybrid-hydration sub-bootstrap succeeds only when:
 
 1. Full RetroFuse authority boot has completed.
 2. The authority-response schema, SOP, and ticket-contract index are resolved and verified.
-3. ChatGPT has bound `RCD-AUTHORITY-RESPONSE-v3` as the response schema.
+3. ChatGPT has bound `RCD-ENVELOPE-v3` as the response schema.
 4. The current Daily Bundle identity is resolved by filename at the root and its freshness is reconciled.
 5. The resolved bundle and provider hydration identities are mutually consistent.
 6. ChatGPT can state the exact current contract and bundle identities without relying on DOM history or inference.
