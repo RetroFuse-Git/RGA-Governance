@@ -225,7 +225,7 @@ the boot surface if needed.
 
 After the binding authority stack and continuity state are loaded, load:
 
-`CHATGPT_HYBRID_HYDRATION_BOOTSTRAP_v1.md`
+`CHATGPT_HYBRID_HYDRATION_BOOTSTRAP_v1.1.md`
 
 This is a specialized sub-sequence, not a replacement boot sequence.
 
@@ -334,7 +334,7 @@ Missing `cdp_targets` is `ROUTING_HALTED`; the target must not be inferred.
 Keep the following project files current as immutable or slowly changing boot anchors:
 
 - `README_FIRST.md`
-- `CHATGPT_HYBRID_HYDRATION_BOOTSTRAP_v1.md`
+- `CHATGPT_HYBRID_HYDRATION_BOOTSTRAP_v1.1.md`
 - `OPS_CANONICAL_INDEX.md`
 - `Governance_RetroFuse_v3.3.1.md`
 - `AI_Contract_Safepoint_v3.2.json`

@@ -420,7 +420,7 @@ Higher precedence wins. This section is the sole authority for precedence order.
 
 ### 1.9 ChatGPT Hybrid-Hydration Bootstrap
 - **Path:** D:\RETROFUSE_OPS\RGA\authority\CHATGPT_HYBRID_HYDRATION_BOOTSTRAP_v1.1.md
-- **SHA-256:** 958E29B2EDE5D3F93E7481FE1242088FE409579D2BEA7BBD13C89945FB52C4DB
+- **SHA-256:** 2094FBA284EAF161FCF8D681F46B8DBDC99C57BA356913DDACAE2B04698E43FB
 - **Authority:** Subordinate ChatGPT hydration gate (NOT BOOT_CRITICAL)
 - **Load placement:** After full authority boot, before Conductor continuation responses
 - **Rule:** Resolves Drive-based authority-response contract and Daily Bundle pointer. Does not override OPS_CANONICAL_INDEX.md, SAFEPOINT SOP, Session Handoff SOP, or full authority boot order.
