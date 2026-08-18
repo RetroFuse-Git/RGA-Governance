@@ -1,7 +1,7 @@
 {
     "manifest_version":  "1.2",
     "authority_root":  "D:\\RETROFUSE_OPS\\RGA\\authority",
-    "created_utc":  "2026-08-18T21:31:49Z",
+    "created_utc":  "2026-08-18T11:00:56Z",
     "total_artifacts":  19,
     "artifacts":  [
                       {
@@ -133,8 +133,8 @@
                       {
                           "inclusion_class":  "BINDING_CONTRACT",
                           "path":  "D:\\RETROFUSE_OPS\\RGA\\authority\\RCD_TICKET_CONTRACT\\RCD_TICKET_CONTRACT_INDEX.md",
-                          "sha256":  "461DB2DFD7440BE3F5671953651C3FEF252D0905AC4902D2E25720E0A28511A3",
-                          "size_bytes":  4940,
+                          "sha256":  "A276712CF7BEC80FE28BD68A36A2DC27B2C04EEF4EE6683170A5730C311D3972",
+                          "size_bytes":  3587,
                           "filename":  "RCD_TICKET_CONTRACT_INDEX.md"
                       }
                   ]

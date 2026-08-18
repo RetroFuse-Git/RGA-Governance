@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "RCD Ticket Envelope",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "type": "object",
   "required": ["schema_version", "ticket_id", "chain_root_id", "task_class", "authority_effect", "stage_id", "cdp_targets"],
   "properties": {
@@ -21,43 +21,7 @@
       }
     },
     "hard_stops": {"type": "array", "items": {"type": "string"}},
-    "git_closeout_policy": {
-      "type": "string",
-      "enum": ["report_only", "defer_until_product_boundary", "commit_if_authorized", "push_if_authorized", "enforce_clean_sync"],
-      "description": "Reconciled 2026-08-18 to the Conductor/GitCloseoutGate runtime accepted set (RCD_SELECTOR_MANIFEST_v1 selector git_closeout_policy). Values bounded_local_commit_authorized / bounded_local_commit_authorized_no_push are legacy ticket-text artifacts and are NOT legal selector values."
-    },
-    "push_authorized": {
-      "type": "boolean",
-      "description": "Derived from git_closeout_policy: report_only/defer_until_product_boundary/commit_if_authorized -> false; push_if_authorized/enforce_clean_sync -> true. Explicit contradiction is refused by the selector validator (PUSH_POLICY_CONTRADICTION)."
-    },
-    "classification": {
-      "type": "string",
-      "enum": ["INITIAL_TICKET", "EXECUTION_TICKET", "IMPLEMENTATION_ROUND", "CORRECTIVE_ROUND", "WORKER_RETURN", "CLOSEOUT_REQUEST", "EXECUTION_RETURN", "AUTHORITY_DECISION", "AUTHORITY_SEAL"],
-      "description": "Envelope class; class contracts in RCD_SELECTOR_MANIFEST_v1 constrain required/forbidden fields and legal status/authority_effect per class."
-    },
-    "status": {
-      "type": "string",
-      "description": "Class-dependent status; legal values per classification are defined in RCD_SELECTOR_MANIFEST_v1 selectors.status.class_dependent."
-    },
-    "execution_lane": {
-      "type": "string",
-      "enum": ["hermes_worker", "rcd_cli", "native_codex", "codex", "copilot", "claude", "gemini_native_cli", "deepseek"],
-      "description": "Execution lane family; lane-specific historical names are not legal selector values."
-    },
-    "delivery_mode": {
-      "type": "string",
-      "enum": ["single_cdp", "multi_cdp", "analysis_only", "disabled", "deferred"],
-      "description": "Matches the Conductor CdpDeliveryMode runtime allowed set."
-    },
-    "routing_mode": {
-      "type": "string",
-      "enum": ["authority", "governed", "advisory"],
-      "description": "Routing mode; authority is the canonical default."
-    },
-    "selector_manifest_version": {
-      "type": "string",
-      "description": "Selector-era envelope stamp: the selector manifest version used to author this envelope. Required for new envelopes passing the selector gate; absent marks the envelope legacy."
-    },
+    "git_closeout_policy": {"type": "string", "enum": ["report_only", "bounded_local_commit_authorized_no_push"]},
     "stage_id": {"type": "string"},
     "cdp_targets": {"type": "array", "minItems": 1, "items": {"type": "string", "enum": ["chatgpt", "gemini", "deepseek"]}}
   }
