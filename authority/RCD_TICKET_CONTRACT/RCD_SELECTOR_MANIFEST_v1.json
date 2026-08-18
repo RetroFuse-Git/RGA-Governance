@@ -1,0 +1,539 @@
+{
+  "class_contracts": {
+    "AUTHORITY_DECISION": {
+      "forbidden": [],
+      "purpose": "Returns authority ruling",
+      "required": [
+        "schema_version",
+        "ticket_id",
+        "chain_root_id",
+        "decision",
+        "accepted_evidence",
+        "next_authorized_stage",
+        "classification",
+        "status",
+        "execution_lane",
+        "delivery_mode",
+        "routing_mode",
+        "cdp_targets",
+        "git_closeout_policy"
+      ]
+    },
+    "AUTHORITY_SEAL": {
+      "forbidden": [],
+      "purpose": "Closes a chain",
+      "required": [
+        "schema_version",
+        "ticket_id",
+        "chain_root_id",
+        "authority_effect",
+        "terminal_verdict",
+        "chain_status",
+        "sealed_findings",
+        "classification",
+        "status",
+        "execution_lane",
+        "delivery_mode",
+        "routing_mode",
+        "cdp_targets",
+        "git_closeout_policy"
+      ]
+    },
+    "CLOSEOUT_REQUEST": {
+      "forbidden": [
+        "mutation_rules"
+      ],
+      "purpose": "Requests authority QC",
+      "required": [
+        "schema_version",
+        "ticket_id",
+        "chain_root_id",
+        "evidence",
+        "persistence_proof",
+        "classification",
+        "status",
+        "execution_lane",
+        "delivery_mode",
+        "routing_mode",
+        "cdp_targets",
+        "git_closeout_policy"
+      ]
+    },
+    "CORRECTIVE_ROUND": {
+      "forbidden": [],
+      "purpose": "Repairs a specific failure",
+      "required": [
+        "schema_version",
+        "ticket_id",
+        "chain_root_id",
+        "parent_round_id",
+        "correction_target",
+        "authority_effect",
+        "stage_id",
+        "classification",
+        "status",
+        "execution_lane",
+        "delivery_mode",
+        "routing_mode",
+        "cdp_targets",
+        "git_closeout_policy"
+      ]
+    },
+    "EXECUTION_RETURN": {
+      "forbidden": [
+        "mutation_rules"
+      ],
+      "purpose": "Returns governed execution evidence for authority QC (operational class)",
+      "required": [
+        "schema_version",
+        "ticket_id",
+        "chain_root_id",
+        "classification",
+        "status",
+        "execution_lane",
+        "delivery_mode",
+        "routing_mode",
+        "cdp_targets",
+        "git_closeout_policy",
+        "stage_id",
+        "evidence"
+      ]
+    },
+    "EXECUTION_TICKET": {
+      "forbidden": [],
+      "purpose": "Authorizes execution of a bounded stage (operational class)",
+      "required": [
+        "schema_version",
+        "ticket_id",
+        "chain_root_id",
+        "task_class",
+        "authority_effect",
+        "stage_id",
+        "classification",
+        "status",
+        "execution_lane",
+        "delivery_mode",
+        "routing_mode",
+        "cdp_targets",
+        "git_closeout_policy"
+      ]
+    },
+    "IMPLEMENTATION_ROUND": {
+      "forbidden": [],
+      "purpose": "Executes a bounded stage",
+      "required": [
+        "schema_version",
+        "ticket_id",
+        "chain_root_id",
+        "parent_round_id",
+        "stage_id",
+        "authority_effect",
+        "single_task_boundary",
+        "required_return",
+        "classification",
+        "status",
+        "execution_lane",
+        "delivery_mode",
+        "routing_mode",
+        "cdp_targets",
+        "git_closeout_policy"
+      ]
+    },
+    "INITIAL_TICKET": {
+      "forbidden": [
+        "prior_round_id",
+        "correction_target"
+      ],
+      "purpose": "Starts a governed chain",
+      "required": [
+        "schema_version",
+        "ticket_id",
+        "chain_root_id",
+        "title",
+        "task_class",
+        "authority_effect",
+        "mission",
+        "path_block",
+        "acceptance_rules",
+        "hard_stops",
+        "stage_id",
+        "classification",
+        "status",
+        "execution_lane",
+        "delivery_mode",
+        "routing_mode",
+        "cdp_targets",
+        "git_closeout_policy"
+      ]
+    },
+    "WORKER_RETURN": {
+      "forbidden": [
+        "mutation_rules"
+      ],
+      "purpose": "Returns execution evidence",
+      "required": [
+        "schema_version",
+        "ticket_id",
+        "chain_root_id",
+        "parent_round_id",
+        "round_status",
+        "evidence",
+        "next_stage_recommendation",
+        "classification",
+        "status",
+        "execution_lane",
+        "delivery_mode",
+        "routing_mode",
+        "cdp_targets",
+        "git_closeout_policy"
+      ]
+    }
+  },
+  "generated": true,
+  "provenance": {
+    "chain_root_id": "OPS-20260818-SELECTOR-PREAUTHORIZATION-INSTALL-001",
+    "generated_utc": "2026-08-18T23:00:00Z",
+    "generator": "generate_selector_manifest.py",
+    "inputs": [
+      {
+        "filename": "Invoke-RCDConductor.ps1",
+        "path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\Invoke-RCDConductor.ps1",
+        "sha256": "804ce80c54a63f541b310062f1f4ea59b10757b1eb2cca218d75fc27373ed27e"
+      },
+      {
+        "filename": "Invoke-RCDGitCloseoutGate.ps1",
+        "path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\Invoke-RCDGitCloseoutGate.ps1",
+        "sha256": "d3dced319d4f0338f10dbd36e2457befc8aabc406a7b228439f764c6bef748bf"
+      },
+      {
+        "filename": "RCD-AuthorityResponsePolicy.ps1",
+        "path": "D:\\RETROFUSE_OPS\\Tools\\RCD\\Tools\\RCD-AuthorityResponsePolicy.ps1",
+        "sha256": "eafef44f96083014142e98e1bfc1f5b067cf15c52ca732d2c024410e7730ef06"
+      },
+      {
+        "filename": "RCD_AUTHORITY_RESPONSE_SCHEMA_v3.json",
+        "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RCD_TICKET_CONTRACT\\RCD_AUTHORITY_RESPONSE_SCHEMA_v3.json",
+        "sha256": "6f462f7711a5dc183dec3c98d5a3f2f0e8f0ee6a55a1fa246563686164ab0331"
+      },
+      {
+        "filename": "RCD_TICKET_AUTHORITY_EFFECTS.md",
+        "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RCD_TICKET_CONTRACT\\RCD_TICKET_AUTHORITY_EFFECTS.md",
+        "sha256": "9d5776c203898a1e0e1468fa735acfc1ee971ac0dcf10b48ce8f6f55e2c4c42d"
+      },
+      {
+        "filename": "RCD_TICKET_ENVELOPE.schema.json",
+        "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RCD_TICKET_CONTRACT\\RCD_TICKET_ENVELOPE.schema.json",
+        "sha256": "45c7b0da04a4f8d765ff0e7495bf2fa5aa104060d761feeed7bbb929356611df"
+      },
+      {
+        "filename": "RCD_TICKET_ENVELOPE_CLASSES.md",
+        "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RCD_TICKET_CONTRACT\\RCD_TICKET_ENVELOPE_CLASSES.md",
+        "sha256": "1b744b8ccc119b27dcd2e3ad3b7955fdefd9d6dc9f067cadc0f08158a918c761"
+      },
+      {
+        "filename": "RCD_TICKET_FIELD_SEMANTICS.md",
+        "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RCD_TICKET_CONTRACT\\RCD_TICKET_FIELD_SEMANTICS.md",
+        "sha256": "f30847f1519f88d6168120aa4e5f2330ff6ffb3d6ee94794601863a51314a0e2"
+      }
+    ],
+    "manifest_version": "1.0",
+    "reconciliation_evidence": "Vocabulary reconciled 2026-08-18 under pre-authorized ticket from Conductor runtime normalization sets, installed envelope schema, ticket-contract family, Chain-1 strictness policy, and 4813 live governed envelopes. git_closeout_policy = Conductor accepted set; unknown values REFUSE (never normalize). Positive legacy qualification is a separate gate rule."
+  },
+  "schema": "RCD_SELECTOR_MANIFEST_v1",
+  "selectors": {
+    "acceptance_rules": {
+      "kind": "structured_object",
+      "required": false
+    },
+    "authority_effect": {
+      "class_correlated": {
+        "AUTHORITY_DECISION": [
+          "SEALED_TERMINAL"
+        ],
+        "AUTHORITY_SEAL": [
+          "SEALED_TERMINAL"
+        ],
+        "CLOSEOUT_REQUEST": [
+          "NONE"
+        ],
+        "CORRECTIVE_ROUND": [
+          "BOUNDED_IMPLEMENTATION_AUTHORIZED"
+        ],
+        "EXECUTION_RETURN": [
+          "NONE"
+        ],
+        "EXECUTION_TICKET": [
+          "READ_ONLY_ANALYSIS_AUTHORIZED",
+          "BOUNDED_IMPLEMENTATION_AUTHORIZED",
+          "BOUNDED_DELIVERY_AUTHORIZED"
+        ],
+        "IMPLEMENTATION_ROUND": [
+          "BOUNDED_IMPLEMENTATION_AUTHORIZED",
+          "BOUNDED_DELIVERY_AUTHORIZED"
+        ],
+        "INITIAL_TICKET": [
+          "NONE",
+          "READ_ONLY_ANALYSIS_AUTHORIZED",
+          "BOUNDED_IMPLEMENTATION_AUTHORIZED",
+          "BOUNDED_DELIVERY_AUTHORIZED",
+          "AUTHORITY_DOCUMENT_MUTATION_AUTHORIZED"
+        ],
+        "WORKER_RETURN": [
+          "NONE"
+        ]
+      },
+      "kind": "hard_selector_class_correlated",
+      "required": true,
+      "source": "RCD_TICKET_ENVELOPE.schema.json enum + class correlation",
+      "values": [
+        "NONE",
+        "READ_ONLY_ANALYSIS_AUTHORIZED",
+        "BOUNDED_IMPLEMENTATION_AUTHORIZED",
+        "BOUNDED_DELIVERY_AUTHORIZED",
+        "AUTHORITY_DOCUMENT_MUTATION_AUTHORIZED",
+        "SEALED_TERMINAL"
+      ]
+    },
+    "cdp_targets": {
+      "kind": "multi_select",
+      "min": 1,
+      "note": "rcd_cli / operator / codex are lanes, not CDP browser targets; they are NOT legal cdp_targets values.",
+      "required": true,
+      "source": "RCD_TICKET_ENVELOPE.schema.json cdp_targets enum",
+      "values": [
+        "chatgpt",
+        "gemini",
+        "deepseek"
+      ]
+    },
+    "chain_root_id": {
+      "kind": "correlation_identity",
+      "required": true
+    },
+    "classification": {
+      "kind": "hard_selector",
+      "note": "EXECUTION_RETURN is the worker's governed evidence-return class; EXECUTION_TICKET authorizes a bounded stage.",
+      "required": true,
+      "source": "RCD_TICKET_ENVELOPE_CLASSES.md + operational evidence (EXECUTION_RETURN 198x, EXECUTION_TICKET 131x)",
+      "values": [
+        "INITIAL_TICKET",
+        "EXECUTION_TICKET",
+        "IMPLEMENTATION_ROUND",
+        "CORRECTIVE_ROUND",
+        "WORKER_RETURN",
+        "CLOSEOUT_REQUEST",
+        "EXECUTION_RETURN",
+        "AUTHORITY_DECISION",
+        "AUTHORITY_SEAL"
+      ]
+    },
+    "delivery_mode": {
+      "kind": "hard_selector",
+      "required": true,
+      "source": "Invoke-RCDConductor.ps1 Normalize-RcdChoice CdpDeliveryMode allowed set",
+      "values": [
+        "single_cdp",
+        "multi_cdp",
+        "analysis_only",
+        "disabled",
+        "deferred"
+      ]
+    },
+    "execution_lane": {
+      "kind": "hard_selector",
+      "note": "Historical lane names (copilot_deepseek_v4_flash etc.) are NOT legal selector values; use the lane family.",
+      "required": true,
+      "source": "live governed envelopes + RGA_LANE_AUTHORITY_REGISTRY",
+      "values": [
+        "hermes_worker",
+        "rcd_cli",
+        "native_codex",
+        "codex",
+        "copilot",
+        "claude",
+        "gemini_native_cli",
+        "deepseek"
+      ]
+    },
+    "git_closeout_policy": {
+      "kind": "hard_selector",
+      "note": "bounded_local_commit_authorized and bounded_local_commit_authorized_no_push are historical ticket-text values NOT accepted by runtime; unknown values REFUSE (never normalize).",
+      "required": true,
+      "source": "Invoke-RCDConductor.ps1 / Invoke-RCDGitCloseoutGate.ps1 runtime allowed set (authoritative)",
+      "values": [
+        "report_only",
+        "defer_until_product_boundary",
+        "commit_if_authorized",
+        "push_if_authorized",
+        "enforce_clean_sync"
+      ]
+    },
+    "hard_stops": {
+      "kind": "structured_object",
+      "required": false
+    },
+    "mission": {
+      "kind": "free_text",
+      "required": false
+    },
+    "mutation_rules": {
+      "kind": "structured_object",
+      "required": false
+    },
+    "next_expected_stage": {
+      "kind": "free_text",
+      "note": "Correlation identity, not a selector; must be a chain-local stage_id.",
+      "required": false
+    },
+    "nonce": {
+      "kind": "correlation_identity",
+      "required": false
+    },
+    "path_block": {
+      "kind": "structured_object",
+      "required": false
+    },
+    "push_authorized": {
+      "contradiction_rule": "Explicit push_authorized differing from the derived value refuses (PUSH_POLICY_CONTRADICTION).",
+      "derivation": {
+        "commit_if_authorized": false,
+        "defer_until_product_boundary": false,
+        "enforce_clean_sync": true,
+        "push_if_authorized": true,
+        "report_only": false
+      },
+      "derive_from": "git_closeout_policy",
+      "kind": "derived_boolean",
+      "required": false,
+      "source": "reconciled by this chain; deterministic derivation, never silent default"
+    },
+    "return_requirements": {
+      "kind": "structured_object",
+      "required": false
+    },
+    "round_id": {
+      "kind": "correlation_identity",
+      "required": false
+    },
+    "routing_mode": {
+      "kind": "hard_selector",
+      "required": true,
+      "source": "live governed envelopes; authority is the canonical default",
+      "values": [
+        "authority",
+        "governed",
+        "advisory"
+      ]
+    },
+    "schema_version": {
+      "kind": "hard_selector",
+      "note": "RCD-ENVELOPE-v4 is designed but NOT activated; selector-era construction MUST use RCD-ENVELOPE-v3.",
+      "required": true,
+      "source": "RCD_TICKET_ENVELOPE.schema.json enum",
+      "values": [
+        "RCD-ENVELOPE-v3",
+        "RCD-ENVELOPE-v4"
+      ]
+    },
+    "scope": {
+      "kind": "structured_object",
+      "required": false
+    },
+    "stage_id": {
+      "kind": "free_text",
+      "note": "Chain-local stage identifier.",
+      "required": true
+    },
+    "status": {
+      "class_dependent": {
+        "AUTHORITY_DECISION": [
+          "NEXT_ROUND_AUTHORIZED",
+          "SEALED_TERMINAL",
+          "BLOCKED",
+          "NEEDS_MORE_EVIDENCE"
+        ],
+        "AUTHORITY_SEAL": [
+          "SEALED_TERMINAL"
+        ],
+        "CLOSEOUT_REQUEST": [
+          "RETURNED_FOR_QC_ADJUDICATION"
+        ],
+        "CORRECTIVE_ROUND": [
+          "AUTHORIZED_FOR_EXECUTION",
+          "BLOCKED"
+        ],
+        "EXECUTION_RETURN": [
+          "RETURNED_FOR_QC_ADJUDICATION"
+        ],
+        "EXECUTION_TICKET": [
+          "AUTHORIZED_FOR_EXECUTION",
+          "BLOCKED"
+        ],
+        "IMPLEMENTATION_ROUND": [
+          "AUTHORIZED_FOR_EXECUTION",
+          "BLOCKED"
+        ],
+        "INITIAL_TICKET": [
+          "AUTHORIZED_FOR_EXECUTION",
+          "BLOCKED"
+        ],
+        "WORKER_RETURN": [
+          "RETURNED_FOR_QC_ADJUDICATION"
+        ]
+      },
+      "kind": "hard_selector_class_dependent",
+      "required": true,
+      "source": "live governed envelopes + RCD_AUTHORITY_RESPONSE_SCHEMA_v3.json"
+    },
+    "task_class": {
+      "kind": "hard_selector",
+      "note": "Historical task_class values (e.g. bounded_delivery_and_verification) are NOT legal selector values; use bounded_delivery.",
+      "required": true,
+      "source": "RCD_TICKET_ENVELOPE.schema.json enum",
+      "values": [
+        "read_only_discovery",
+        "bounded_implementation",
+        "bounded_delivery",
+        "bounded_authority_installation",
+        "governance_review",
+        "architecture_design"
+      ]
+    },
+    "terminal_seal": {
+      "kind": "hard_selector",
+      "note": "Authority-response field; present only on AUTHORITY_SEAL / authority responses.",
+      "required": false,
+      "source": "live authority responses (terminal_seal field)",
+      "values": [
+        "GRANTED",
+        "DENIED",
+        "WITHHELD",
+        "REVOKED",
+        "DEFERRED"
+      ]
+    },
+    "ticket_id": {
+      "kind": "correlation_identity",
+      "required": true
+    },
+    "title": {
+      "kind": "free_text",
+      "required": false
+    },
+    "verdict": {
+      "kind": "hard_selector",
+      "required": false,
+      "source": "live authority responses (verdict / authority_verdict field)",
+      "values": [
+        "ACCEPT",
+        "ACCEPT_WITH_FINDINGS",
+        "PASS",
+        "PASS_WITH_FINDINGS",
+        "REJECT",
+        "BLOCKED",
+        "NEEDS_MORE_EVIDENCE"
+      ]
+    }
+  },
+  "version": "1.0"
+}
