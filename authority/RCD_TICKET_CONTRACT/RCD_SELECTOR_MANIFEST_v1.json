@@ -223,17 +223,17 @@
       {
         "filename": "RCD_TICKET_ENVELOPE.schema.json",
         "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RCD_TICKET_CONTRACT\\RCD_TICKET_ENVELOPE.schema.json",
-        "sha256": "45c7b0da04a4f8d765ff0e7495bf2fa5aa104060d761feeed7bbb929356611df"
+        "sha256": "9c6e7d2ea87df7093cd1855fc53ccb03f442cff9ca70b780eb39d7f3a7392bab"
       },
       {
         "filename": "RCD_TICKET_ENVELOPE_CLASSES.md",
         "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RCD_TICKET_CONTRACT\\RCD_TICKET_ENVELOPE_CLASSES.md",
-        "sha256": "1b744b8ccc119b27dcd2e3ad3b7955fdefd9d6dc9f067cadc0f08158a918c761"
+        "sha256": "828e91e6c0963af8780536ed75b53418ce9b93379a40f4e3c23655d1d63efc53"
       },
       {
         "filename": "RCD_TICKET_FIELD_SEMANTICS.md",
         "path": "D:\\RETROFUSE_OPS\\RGA\\authority\\RCD_TICKET_CONTRACT\\RCD_TICKET_FIELD_SEMANTICS.md",
-        "sha256": "f30847f1519f88d6168120aa4e5f2330ff6ffb3d6ee94794601863a51314a0e2"
+        "sha256": "c3076989bdcc134a659cf36983dcec04a10c49b86151d01c346db121df98cbab"
       }
     ],
     "manifest_version": "1.0",

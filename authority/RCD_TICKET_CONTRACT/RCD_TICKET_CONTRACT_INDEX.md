@@ -18,7 +18,7 @@
 | RCD_TICKET_VERSIONING_AND_MIGRATION.md | 1.0.0 | `3F8A4F770AEBE6332B3EEA506136A2B893F4E0C3A3EBEF41112E8748B0539748` | Compatibility, version negotiation, rollback |
 | RCD_TICKET_CONTROL_PLAN.md | 1.0.0 | `94CF6F7E99A893B671E455CC63AFA48D1BAEB1F3BDFC57942BBE8DC58637B185` | Operational metrics, validation gates, control limits |
 | RCD_TICKET_AUTHORING_SCOPE_POLICY_v1.0.md | 1.0.0 | `9F5D2B29780E1A443EE89FC9A68E446CE330ADEB9BAC5A55EABEE176C1977802` | Ticket authoring scope, brevity, and exclusion policy |
-| RCD_SELECTOR_MANIFEST_v1.json | 1.0 | `34CD6A12AE9B5E68C5820B119C0236B27DB16530CD218670B08D1FFC57A820CE` | **Selector manifest v1.0 (generated authority):** legal control-plane values, class contracts, provenance (8 inputs). Consumed by CLI/AI authoring + shared validator. Generated artifact -- regenerate via `RCD Tools/selector/generate_selector_manifest.py`, never hand-edit. |
+| RCD_SELECTOR_MANIFEST_v1.json | 1.0 | `5178991C712050FDCB6910B3AA8B2516AFE300326CD9D80A6E05AB794D08044B` | **Selector manifest v1.0 (generated authority):** legal control-plane values, class contracts, provenance (8 inputs). Consumed by CLI/AI authoring + shared validator. Generated artifact -- regenerate via `RCD Tools/selector/generate_selector_manifest.py`, never hand-edit. |
 
 ## Child Hash Verification Rule
 A compliant contract loader MUST verify every child file listed in this index against its declared SHA-256 before admitting any RCD ticket. Any missing, hash-mismatched, or unlisted child is a hard fail-closed. The RGA bootloader verifies this index hash against the authority manifest; child hashes are verified by the RCD contract loader at admission time.
