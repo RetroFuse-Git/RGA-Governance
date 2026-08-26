@@ -43,7 +43,7 @@
     {
       "tool_id": "launch_orchestrator",
       "canonical_path": "D:\\RETROFUSE_OPS\\Tools\\RGA\\rga_launch_orchestrator.py",
-      "sha256": "0C18AC8345EE7369748DE050F16AAA2FEF5C7056DE60FD81E8AAD5B2CB4B0B07",
+      "sha256": "D6E05C8E04D4FCA12A553E8D804FD292D4E220B231026FE753E02D728D1576CA",
       "verification_scope": "mutable_routing",
       "self_update_allowed": false
     },
