@@ -572,6 +572,20 @@ Preserve the active incomplete chain across session boundaries so that successor
 - Successor sessions must read plan.md first and resume from the exact unresolved state.
 - No session may restart completed work when a verified handoff exists.
 
+### 16.3A ACTIVE_INTERRUPTED_TICKET Restoration (binding)
+
+- An active governed ticket interrupted by a repair chain remains
+  `ACTIVE_INCOMPLETE` mandatory unresolved work unless an explicit authority
+  artifact cancels, supersedes, or terminally closes that exact ticket.
+- The repair-chain authority artifact MUST record the interrupted ticket identity
+  as its restoration target. A repair chain cannot silently demote that ticket to
+  optional backlog, finding-only status, or model-memory continuation.
+- On terminal closure of the repair chain, authoritative continuity MUST restore
+  the interrupted ticket as mandatory next governed work unless the required
+  explicit cancellation, supersession, or terminal artifact exists.
+- A receiver/runtime response to malformed authority output does not itself
+  cancel, supersede, or demote any active ticket.
+
 ### 16.4 Failure States
 
 | Condition | Classification | Recovery |

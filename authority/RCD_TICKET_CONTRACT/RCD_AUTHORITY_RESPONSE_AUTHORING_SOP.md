@@ -20,6 +20,22 @@ Just: { "schema_version": "RCD-ENVELOPE-v3", ... }
 - round_id: copy exactly from request
 - nonce: copy exactly from request
 
+## Rule 3A: Authority-Output Defect Ownership (binding)
+
+An authority response that violates this SOP or the normative authority-response
+schema is an `AUTHORITY_OUTPUT_DEFECT`. This includes prose or markdown/fenced
+output where strict JSON is required, wrappers or concatenated objects,
+contradictory shell/envelope identity, stale correlation identity, and an
+authority-owned mutation instruction that names the wrong owner or canonical
+path.
+
+Receiver containment may reject the candidate, preserve its raw evidence,
+perform one separately authorized bounded formatting correction, and fail
+closed. Malformed authority output alone does not prove a receiver defect and
+does not authorize parser relaxation, field synthesis, fuzzy interpretation, or
+any Conductor/receiver change. A receiver repair requires independent evidence
+of a receiver-contract violation.
+
 ## Rule 4: Terminal Seal (CLOSEOUT response)
 Required fields:
 - terminal_seal: "GRANTED" (or "SEALED" or "TRUE")
@@ -35,6 +51,13 @@ REQUIRED: `next_ticket_envelope.stage_id` MUST equal `next_expected_stage` (the
 NEXT round's stage), NOT the current round's stage. The next envelope describes
 the round to be executed after this one; its stage_id must be the stage that
 round will run. Do not echo the current round's stage_id into the next envelope.
+
+For the canonical successor-top continuation shape, the top-level `ticket_id`
+and `stage_id` identify the successor only when they exactly equal the embedded
+`next_ticket_envelope` identity, top-level `round_id` exactly echoes the
+delivered round, and `next_ticket_envelope.prior_round_id` exactly identifies
+that delivered round. Any contradictory shell or stale correlation field is an
+`AUTHORITY_OUTPUT_DEFECT`, not authority for receiver relaxation.
 
 ## Rule 6: Hard Halt
 classification: "HARD_HALT" or status: "BLOCKED"

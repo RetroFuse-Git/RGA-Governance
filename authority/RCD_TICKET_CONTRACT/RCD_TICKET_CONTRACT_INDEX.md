@@ -45,7 +45,7 @@ Any child-file hash change requires this index to be updated. The RGA bootloader
 | File | Version | SHA-256 | Purpose |
 |------|---------|---------|---------|
 | RCD_AUTHORITY_RESPONSE_SCHEMA_v3.json | 3.0.0 | $schemaHash | Normative authority-response schema consumed by ConvertFrom-RCDContinuationJson |
-| RCD_AUTHORITY_RESPONSE_AUTHORING_SOP.md | 1.0.0 | $sopHash | ChatGPT authority-response authoring procedure |
+| RCD_AUTHORITY_RESPONSE_AUTHORING_SOP.md | 1.0.0 | `A847C27AE6F5123283BA301F52ACD9F804720D06CFE7D7CA570448FAA9C0223A` | ChatGPT authority-response authoring procedure and binding authority-output defect ownership |
 | _fixtures/terminal_valid.json | 1.0.0 | fixture | Valid terminal-seal response fixture |
 | _fixtures/nonterminal_valid.json | 1.0.0 | fixture | Valid next-round continuation fixture |
 | _fixtures/missing_classification.json | 1.0.0 | fixture | Missing-classification rejection fixture |
