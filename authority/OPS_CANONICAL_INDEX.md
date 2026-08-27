@@ -439,7 +439,7 @@ Higher precedence wins. This section is the sole authority for precedence order.
 ### 17.1 OPS Repository Remote Applicability Policy (Registered R06)
 - **Status:** ACTIVE (registered by OPS-20260801-GOVERNOR-UNITY-TRANSPARENCY-AND-CONTINUITY-REPAIR-004-R06)
 - **Policy path:** D:\RETROFUSE_OPS\Registry\OPS_COO\Policy\OPS_RepositoryRemoteApplicabilityPolicy_v1.md
-- **Binding rule:** D:\RETROFUSE_OPS is **LOCAL_ONLY** (no remote, no upstream). RetroFuse-Git/OPS-Tools.git is the Tools SUB-REPO remote and MUST NOT be treated as the OPS-root remote.
+- **Binding rule:** D:\RETROFUSE_OPS is **REMOTE_BOUND** (origin https://github.com/RetroFuse-Git/OPS.git, upstream origin/master) as admitted by the terminally sealed chain OPS-20260805-OPS-ROOT-REMOTE-CREATION-AND-PUSH-001 (PASS_WITH_FINDINGS, terminal seal ISSUED 2026-08-05). RetroFuse-Git/OPS-Tools.git is the Tools SUB-REPO remote and MUST NOT be treated as the OPS-root remote.
 - **Four states:** LOCAL_ONLY / REMOTE_BOUND / REMOTE_ADMISSION_REQUIRED / REMOTE_PROHIBITED.
 - **Closeout rule:** CANNOT_PUSH_NO_REMOTE is a SUCCESS for LOCAL_ONLY repos; local_head_upstream_equality = N/A.
 - **Precedence note:** Discover remote applicability before generating push requirements. No remote fabrication. No silent subproject-to-root mapping.
