@@ -1,6 +1,6 @@
 # RCD Ticket Contract -- Authority Index
 
-**Version:** 1.1.0
+**Version:** 1.2.0
 **Status:** INSTALLED_NOT_ACTIVATED (runtime admission remains RCD-ENVELOPE-v3; selector-era authoring is ACTIVE via the selector gate)
 **Authority:** RGA governs; RCD validates and executes.
 **Boot rule:** RGA bootloader references this index by exact path and hash only.
@@ -18,7 +18,7 @@
 | RCD_TICKET_VERSIONING_AND_MIGRATION.md | 1.0.0 | `3F8A4F770AEBE6332B3EEA506136A2B893F4E0C3A3EBEF41112E8748B0539748` | Compatibility, version negotiation, rollback |
 | RCD_TICKET_CONTROL_PLAN.md | 1.0.0 | `94CF6F7E99A893B671E455CC63AFA48D1BAEB1F3BDFC57942BBE8DC58637B185` | Operational metrics, validation gates, control limits |
 | RCD_TICKET_AUTHORING_SCOPE_POLICY_v1.0.md | 1.0.0 | `9F5D2B29780E1A443EE89FC9A68E446CE330ADEB9BAC5A55EABEE176C1977802` | Ticket authoring scope, brevity, and exclusion policy |
-| RCD_SELECTOR_MANIFEST_v1.json | 1.0 | `5178991C712050FDCB6910B3AA8B2516AFE300326CD9D80A6E05AB794D08044B` | **Selector manifest v1.0 (generated authority):** legal control-plane values, class contracts, provenance (8 inputs). Consumed by CLI/AI authoring + shared validator. Generated artifact -- regenerate via `RCD Tools/selector/generate_selector_manifest.py`, never hand-edit. |
+| RCD_SELECTOR_MANIFEST_v1.json | 1.0 | `CE75EEF8438B2C7976D58C648E20EBEDF6A0BD1E4F8E30DED870D8504E2B9FFB` | **Selector manifest v1.0 (generated authority):** legal control-plane values, class contracts, provenance (8 inputs). Consumed by CLI/AI authoring + shared validator. Generated artifact -- regenerate via `RCD Tools/selector/generate_selector_manifest.py`, never hand-edit. |
 
 ## Child Hash Verification Rule
 A compliant contract loader MUST verify every child file listed in this index against its declared SHA-256 before admitting any RCD ticket. Any missing, hash-mismatched, or unlisted child is a hard fail-closed. The RGA bootloader verifies this index hash against the authority manifest; child hashes are verified by the RCD contract loader at admission time.
@@ -44,10 +44,10 @@ Any child-file hash change requires this index to be updated. The RGA bootloader
 ## Authority Response Contract (Chain 087)
 | File | Version | SHA-256 | Purpose |
 |------|---------|---------|---------|
-| RCD_AUTHORITY_RESPONSE_SCHEMA_v3.json | 3.0.0 | $schemaHash | Normative authority-response schema consumed by ConvertFrom-RCDContinuationJson |
+| RCD_AUTHORITY_RESPONSE_SCHEMA_v3.json | 3.0.0 | `6F462F7711A5DC183DEC3C98D5A3F2F0E8F0EE6A55A1FA246563686164AB0331` | Normative authority-response schema consumed by ConvertFrom-RCDContinuationJson |
 | RCD_AUTHORITY_RESPONSE_AUTHORING_SOP.md | 1.0.0 | `A847C27AE6F5123283BA301F52ACD9F804720D06CFE7D7CA570448FAA9C0223A` | ChatGPT authority-response authoring procedure and binding authority-output defect ownership |
-| _fixtures/terminal_valid.json | 1.0.0 | fixture | Valid terminal-seal response fixture |
-| _fixtures/nonterminal_valid.json | 1.0.0 | fixture | Valid next-round continuation fixture |
-| _fixtures/missing_classification.json | 1.0.0 | fixture | Missing-classification rejection fixture |
-| _fixtures/malformed_json.txt | 1.0.0 | fixture | Malformed-JSON rejection fixture |
-| _fixtures/natural_language_only.txt | 1.0.0 | fixture | Natural-language-only rejection fixture |
+| _fixtures/terminal_valid.json | 1.0.0 | `EDA5B18199B1B468C19616F3868012E0C4524771185987CEAF95744CD156A86D` | Valid terminal-seal response fixture |
+| _fixtures/nonterminal_valid.json | 1.0.0 | `115D3E7BFA9E834D3A0DD669757F778BB512A455A6BFAC0C4CAB7EFC69653305` | Valid next-round continuation fixture |
+| _fixtures/missing_classification.json | 1.0.0 | `BB08F494FAAB5649B553CA1D64CDC460C65B69AA41C320915FCD3BDD55B88B8E` | Missing-classification rejection fixture |
+| _fixtures/malformed_json.txt | 1.0.0 | `3F67B065F4A3CF6DCF742FD850A1102AC7D4947812C13F5C23FDBF5C0F012F8F` | Malformed-JSON rejection fixture |
+| _fixtures/natural_language_only.txt | 1.0.0 | `26BBF741933D33205C3A0275CD3180819F38CAE7D8D93E0B7735575753896F41` | Natural-language-only rejection fixture |
