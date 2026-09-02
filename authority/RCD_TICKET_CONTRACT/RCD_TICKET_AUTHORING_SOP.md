@@ -44,6 +44,42 @@ push_authorized=false; push_if_authorized / enforce_clean_sync imply
 push_authorized=true. Do not supply a contradictory explicit push_authorized;
 the selector validator refuses it.
 
+### 5.1 Push-First Pending-Push Precedence (v1.2, registered by
+OPS-20260902-AUTHORITY-GIT-CONTINUITY-PUSH-FIRST-CONTRACT-REPAIR-001)
+
+When authoring any ticket (initial, next-round, corrective, or terminal), the
+author MUST evaluate pending-push state for every governed repository the
+chain touches, in this precedence:
+
+(A) Explicit NO_PUSH authority: a governing artifact (sealed finding, SOP
+    clause) or direct operator instruction requires the commit to remain
+    unpushed -> preserve the unpushed state, cite the authority source in the
+    ticket, and record the obligation for carry-forward. NO_PUSH requires a
+    concrete reason/source; absence of push authorization is NOT itself a
+    standing prohibition and must not propagate indefinitely.
+(B) Known verified already-authorized pending push: a tracked-clean,
+    ahead-of-origin repository whose outgoing commits are proven
+    authorized/sealed governed work -> the next executable ticket MUST place
+    bounded push reconciliation (verify identities, fast-forward push, prove
+    0/0) as its FIRST action, before new implementation/discovery work. A
+    clean-but-ahead repository is NOT "synchronized"; it must be surfaced as
+    `ahead N (authorized pending push)`, never as synchronized, and never
+    treated as harmless housekeeping while subsequent governed work is being
+    emitted.
+(C) No eligible pending push -> normal ticket-specific git_closeout_policy
+    applies.
+
+Carry-forward rule: ticket-authoring logic MUST carry known pending-push
+state across rounds and chains until discharged. A later report_only ticket
+MUST NOT erase, shadow, or silently defer that obligation; if the current
+round's task is report_only but an inherited eligible push exists, the ticket
+must still lead with (B)'s bounded push reconciliation. Distinguish a
+clean-ahead repository from a dirty working tree: both are surfaced; only the
+clean-ahead state is push-eligible under this precedence. If any outgoing
+commit cannot be tied to authorized governed work, HALT the push and return
+the exact commit list for authority adjudication (never push a partial range
+past an unverified commit).
+
 ## 6. Terminal Closeout
 A seal must have next_expected_stage=null. A closeout request must include persistence_proof. A worker return must include evidence.
 

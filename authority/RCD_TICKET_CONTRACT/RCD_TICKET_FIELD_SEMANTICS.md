@@ -47,3 +47,25 @@ chain_root_id and prior_round_id are immutable once set. stage_id is round-local
 - terminal_verdict=SEALED_TERMINAL with non-null next_expected_stage
 - classification=WORKER_RETURN/CLOSEOUT_REQUEST/EXECUTION_RETURN with mutation_rules present (class contract forbids)
 - prior_round_id / correction_target on INITIAL_TICKET (class contract forbids)
+
+## Pending-Push Obligation (v1.2, registered by
+OPS-20260902-AUTHORITY-GIT-CONTINUITY-PUSH-FIRST-CONTRACT-REPAIR-001)
+
+A repository left `ahead N` with a tracked-clean tree by an authorized or
+sealed governed commit carries a PENDING-PUSH OBLIGATION, not a completed
+disposition:
+
+- It MUST be surfaced in every subsequent ticket's Git-state evidence as
+  `ahead N (authorized pending push)`; describing it as `synchronized` is a
+  validation-level misrepresentation (see AUTHORING_SOP §5.1 precedence).
+- `git_closeout_policy=report_only` governs the CURRENT round's mutations
+  only; it never discharges or suppresses an inherited pending-push
+  obligation. A report_only ticket authored while an eligible authorized
+  pending push exists must still place bounded push reconciliation first
+  (AUTHORING_SOP §5.1 precedence B).
+- Explicit NO_PUSH remains legal but requires a concrete authority
+  source/reason recorded in the ticket; "no push authorization was granted"
+  alone is not a standing prohibition.
+- Obligations persist across rounds and chains until discharged by a proven
+  0/0 state (HEAD == origin and clean tracked tree) or an explicit NO_PUSH
+  authority source.

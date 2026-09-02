@@ -11,8 +11,8 @@
 |------|---------|---------|---------|
 | RCD_TICKET_ENVELOPE.schema.json | 1.1.0 | `9C6E7D2EA87DF7093CD1855FC53CCB03F442CFF9CA70B780EB39D7F3A7392BAB` | Normative ticket envelope schema (v1.1: reconciled git_closeout_policy + selector fields + legacy_provenance) |
 | RCD_AUTHORITY_SEAL.schema.json | 1.0.0 | `A579B3C0326657579CF064208EDA68673CD3FDE2CB156B80E0BA598F03DAD85B` | Normative authority decision and seal schema |
-| RCD_TICKET_AUTHORING_SOP.md | 1.1.0 | `6F7208ABC0D4CC7D8AA1CC5E6C3148BF9F5C25D58775CE65016DB9DED3B07C5F` | Human/AI authoring procedure with selector-manifest consumption requirement |
-| RCD_TICKET_FIELD_SEMANTICS.md | 1.1.0 | `C3076989BDCC134A659CF36983DCEC04A10C49B86151D01C346DB121DF98CBAB` | Canonical field ownership, selector rules, legacy qualification, forbidden combinations |
+| RCD_TICKET_AUTHORING_SOP.md | 1.2.0 | `6AF0117F66A059AC4656722B6EE140F7FB0BD67C882E1CB8B83E3E29ADAFA4E1` | Human/AI authoring procedure with selector-manifest consumption requirement + push-first pending-push precedence (§5.1, v1.2) |
+| RCD_TICKET_FIELD_SEMANTICS.md | 1.2.0 | `24D01E4624303429E02650AA26EEDBD3B3B7350BA045484206DF4BD91F7416B7` | Canonical field ownership, selector rules, legacy qualification, forbidden combinations, pending-push obligation (v1.2) |
 | RCD_TICKET_ENVELOPE_CLASSES.md | 1.1.0 | `828E91E6C0963AF8780536ED75B53418CE9B93379A40F4E3C23655D1D63EFC53` | Envelope classes incl. EXECUTION_RETURN/EXECUTION_TICKET, required/forbidden |
 | RCD_TICKET_AUTHORITY_EFFECTS.md | 1.0.0 | `9D5776C203898A1E0E1468FA735ACFC1EE971AC0DCF10B48CE8F6F55E2C4C42D` | Authority-effect matrix and mutation consequences |
 | RCD_TICKET_VERSIONING_AND_MIGRATION.md | 1.0.0 | `3F8A4F770AEBE6332B3EEA506136A2B893F4E0C3A3EBEF41112E8748B0539748` | Compatibility, version negotiation, rollback |

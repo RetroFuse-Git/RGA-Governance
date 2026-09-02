@@ -1,7 +1,7 @@
 {
     "manifest_version":  "1.2",
     "authority_root":  "D:\\RETROFUSE_OPS\\RGA\\authority",
-    "created_utc":  "2026-08-29T14:29:57Z",
+    "created_utc":  "2026-09-02T19:38:06Z",
     "total_artifacts":  19,
     "artifacts":  [
                       {
@@ -126,15 +126,15 @@
                       {
                           "inclusion_class":  "SUPPORTING_REFERENCE",
                           "path":  "D:\\RETROFUSE_OPS\\RGA\\authority\\RGA_LATEST_ACCEPTED_CAPSULE_POINTER.json",
-                          "sha256":  "29E7C0ABE1070811D9E5C411408F2A91833E2B646088480278481E2E781C5A66",
+                          "sha256":  "1A4C4951BD5B51D527051957A1CA7F87C444E2F8665E3F3429270C0EEC04BEFE",
                           "size_bytes":  951,
                           "filename":  "RGA_LATEST_ACCEPTED_CAPSULE_POINTER.json"
                       },
                       {
                           "inclusion_class":  "BINDING_CONTRACT",
                           "path":  "D:\\RETROFUSE_OPS\\RGA\\authority\\RCD_TICKET_CONTRACT\\RCD_TICKET_CONTRACT_INDEX.md",
-                          "sha256":  "EA876315266177F0FE4279228EEDD45D9D639B38104D9F0C9848C909C3B66A5C",
-                          "size_bytes":  5639,
+                          "sha256":  "E5A60382974F1A082D1D1A57234F15BB3A5BF67335D17FF92EA9BC4EB2897AB8",
+                          "size_bytes":  5722,
                           "filename":  "RCD_TICKET_CONTRACT_INDEX.md"
                       }
                   ]
